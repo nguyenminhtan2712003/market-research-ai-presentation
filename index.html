@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & Market Research — Oanh Grytt</title>
+<style>
+  /* ===== BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --surface2: #1e2a3a;
+    --accent: #6366f1;
+    --accent2: #8b5cf6;
+    --teal: #14b8a6;
+    --orange: #f97316;
+    --yellow: #fbbf24;
+    --green: #22c55e;
+    --red: #ef4444;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: rgba(99,102,241,0.25);
+    --glow: 0 0 30px rgba(99,102,241,0.3);
+  }
+  html, body { height: 100%; overflow: hidden; background: var(--bg); font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); font-size: 17px; }
+
+  /* ===== PRESENTATION SHELL ===== */
+  #deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ===== SLIDES ===== */
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 80px;
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  #progress-bar {
+    position: fixed;
+    bottom: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--teal));
+    transition: width 0.4s ease;
+    z-index: 100;
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  /* ===== SLIDE COUNTER ===== */
+  #counter {
+    position: fixed;
+    top: 20px; right: 24px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    z-index: 100;
+  }
+
+  /* ===== NAV BUTTONS ===== */
+  .nav-btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    background: rgba(30,42,58,0.7);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    backdrop-filter: blur(8px);
+  }
+  .nav-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.2; cursor: default; }
+  #btn-prev { left: 16px; }
+  #btn-next { right: 16px; }
+
+  /* ===== DOT INDICATORS ===== */
+  #dots {
+    position: fixed;
+    bottom: 18px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 6px;
+    z-index: 100;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--muted);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    opacity: 0.4;
+  }
+  .dot.active { background: var(--accent); transform: scale(1.4); opacity: 1; }
+
+  /* ===== BACKGROUNDS ===== */
+  .bg-gradient-1 { background: radial-gradient(ellipse at 30% 20%, rgba(99,102,241,0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(20,184,166,0.1) 0%, transparent 60%), var(--bg); }
+  .bg-gradient-2 { background: radial-gradient(ellipse at 80% 10%, rgba(249,115,22,0.12) 0%, transparent 60%), radial-gradient(ellipse at 20% 90%, rgba(139,92,246,0.12) 0%, transparent 60%), var(--bg); }
+  .bg-gradient-3 { background: radial-gradient(ellipse at 50% 0%, rgba(34,197,94,0.1) 0%, transparent 60%), var(--bg); }
+
+  /* ===== TYPOGRAPHY HELPERS ===== */
+  .chip {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .chip-purple { background: rgba(99,102,241,0.2); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.4); }
+  .chip-teal   { background: rgba(20,184,166,0.2); color: #5eead4; border: 1px solid rgba(20,184,166,0.4); }
+  .chip-orange { background: rgba(249,115,22,0.2); color: #fb923c; border: 1px solid rgba(249,115,22,0.4); }
+  .chip-green  { background: rgba(34,197,94,0.2);  color: #4ade80; border: 1px solid rgba(34,197,94,0.4); }
+  .chip-red    { background: rgba(239,68,68,0.2);  color: #f87171; border: 1px solid rgba(239,68,68,0.4); }
+  .chip-yellow { background: rgba(251,191,36,0.2); color: #fde047; border: 1px solid rgba(251,191,36,0.4); }
+
+  h1 { font-size: clamp(38px, 5.5vw, 68px); font-weight: 800; line-height: 1.1; text-align: center; }
+  h2 { font-size: clamp(28px, 4vw, 50px); font-weight: 700; line-height: 1.2; }
+  h3 { font-size: clamp(18px, 2.5vw, 28px); font-weight: 600; }
+  p  { font-size: clamp(14px, 1.6vw, 18px); line-height: 1.7; color: var(--muted); }
+
+  .gradient-text { background: linear-gradient(135deg, #a5b4fc, #5eead4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .gradient-text-orange { background: linear-gradient(135deg, #fb923c, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .gradient-text-green  { background: linear-gradient(135deg, #4ade80, #14b8a6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* ===== CARD ===== */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(99,102,241,0.05), transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ===== BEFORE/AFTER COLUMNS ===== */
+  .ba-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 1100px;
+  }
+  .ba-col { display: flex; flex-direction: column; gap: 14px; }
+  .ba-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 100px; display: inline-block; width: fit-content;
+  }
+  .ba-before { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
+  .ba-after  { background: rgba(34,197,94,0.15);  color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
+
+  /* ===== STEP CARDS ===== */
+  .step-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 800px; }
+  .step-item {
+    display: flex; align-items: flex-start; gap: 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+  }
+  .step-num {
+    width: 36px; height: 36px; min-width: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+  }
+  .step-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
+  .step-body p  { font-size: 14px; }
+
+  /* ===== FLOW ARROWS ===== */
+  .flow {
+    display: flex; align-items: center; gap: 10px;
+    flex-wrap: wrap; justify-content: center;
+    width: 100%; max-width: 900px;
+  }
+  .flow-node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 13px; font-weight: 600;
+    white-space: nowrap;
+  }
+  .flow-arrow { color: var(--accent); font-size: 20px; }
+  .flow-node.highlight { background: rgba(99,102,241,0.2); border-color: var(--accent); color: var(--accent); }
+
+  /* ===== STRENGTH / WEAKNESS GRID ===== */
+  .sw-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%; max-width: 1000px;
+  }
+  .sw-item {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 22px 26px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .sw-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  .sw-item h4 { font-size: 16px; font-weight: 600; margin-bottom: 7px; }
+  .sw-item p  { font-size: 14px; }
+  .sw-strength { border: 1px solid rgba(34,197,94,0.3); }
+  .sw-weakness { border: 1px solid rgba(239,68,68,0.3); }
+
+  /* ===== IMAGE SLIDES ===== */
+  .img-compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  .img-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .img-panel-header {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface2);
+  }
+  .dot-row { display: flex; gap: 5px; }
+  .dot-row span { width: 9px; height: 9px; border-radius: 50%; display: block; }
+  .dot-red { background: #ef4444; }
+  .dot-yel { background: #f59e0b; }
+  .dot-grn { background: #22c55e; }
+  .img-panel-title { font-size: 11px; font-weight: 600; color: var(--muted); }
+  .img-panel-body {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    overflow: hidden;
+  }
+  .img-panel-body img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    max-height: 280px;
+  }
+  /* Fallback placeholder shown via JS when img fails */
+  .img-placeholder {
+    width: 100%;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+  }
+  .ph-icon { font-size: 36px; opacity: 0.4; }
+  .ph-text { font-size: 12px; color: var(--muted); text-align: center; line-height: 1.6; }
+  .ph-path { font-size: 11px; background: var(--surface2); padding: 3px 10px; border-radius: 6px; color: #a5b4fc; font-family: monospace; }
+
+  /* ===== QUOTE / INSIGHT ===== */
+  .big-quote {
+    font-size: clamp(24px, 3.5vw, 40px);
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 800px;
+  }
+  .insight-box {
+    background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(20,184,166,0.1));
+    border: 1px solid rgba(99,102,241,0.35);
+    border-radius: 20px;
+    padding: 44px 64px;
+    text-align: center;
+    max-width: 820px;
+    width: 100%;
+  }
+
+  /* ===== TITLE DECO ===== */
+  .hero-line {
+    width: 80px; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--teal));
+    border-radius: 2px;
+    margin: 16px auto;
+  }
+  .tag-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+  .tag {
+    padding: 6px 16px; border-radius: 100px;
+    font-size: 12px; font-weight: 600;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: var(--surface);
+  }
+
+  /* ===== SUBTITLE BAR ===== */
+  .slide-subtitle {
+    font-size: clamp(13px, 1.4vw, 15px);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  /* ===== PIPELINE VISUAL ===== */
+  .pipeline-row {
+    display: flex; gap: 8px; align-items: center;
+    flex-wrap: wrap; justify-content: center;
+    width: 100%; max-width: 1000px;
+  }
+  .pipe-node { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .pipe-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 15px;
+    font-size: 12px; font-weight: 700;
+    text-align: center;
+    min-width: 84px;
+    line-height: 1.4;
+  }
+  .pipe-box.active-node {
+    background: rgba(99,102,241,0.2);
+    border-color: var(--accent);
+    color: #a5b4fc;
+    box-shadow: 0 0 12px rgba(99,102,241,0.25);
+  }
+  .pipe-arrow { color: var(--muted); font-size: 16px; }
+  .pipe-sub { font-size: 10px; color: var(--muted); text-align: center; }
+
+  /* ===== CONCLUSION ===== */
+  .conclusion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%; max-width: 900px;
+  }
+  .c-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 30px 24px;
+    text-align: center;
+  }
+  .c-card .icon { font-size: 44px; margin-bottom: 14px; }
+  .c-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .c-card p  { font-size: 14px; }
+
+  /* ===== ANIMATION (keyframe-based, clean bidirectional) ===== */
+  @keyframes slideEnter    { from { transform: translateX(80px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  @keyframes slideExit     { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-80px); opacity: 0; } }
+  @keyframes slideEnterRev { from { transform: translateX(-80px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  @keyframes slideExitRev  { from { transform: translateX(0); opacity: 1; } to { transform: translateX(80px); opacity: 0; } }
+
+  .anim-enter     { animation: slideEnter    0.42s cubic-bezier(0.22,1,0.36,1) both; }
+  .anim-exit      { animation: slideExit     0.42s cubic-bezier(0.22,1,0.36,1) both; }
+  .anim-enter-rev { animation: slideEnterRev 0.42s cubic-bezier(0.22,1,0.36,1) both; }
+  .anim-exit-rev  { animation: slideExitRev  0.42s cubic-bezier(0.22,1,0.36,1) both; }
+</style>
+</head>
+<body>
+
+<!-- UI Controls -->
+<div id="counter">1 / 13</div>
+<button id="btn-prev" class="nav-btn" onclick="navigate(-1)" title="Previous (←)">&#8249;</button>
+<button id="btn-next" class="nav-btn" onclick="navigate(1)"  title="Next (→)">&#8250;</button>
+<div id="dots"></div>
+<div id="progress-bar"></div>
+
+<div id="deck">
+
+  <!-- ===================== SLIDE 1: TITLE ===================== -->
+  <div class="slide active bg-gradient-1">
+    <div class="chip chip-purple">Market Research × AI</div>
+    <h1>
+      AI Đã Thay Đổi<br>
+      <span class="gradient-text">Công Việc Market Research</span><br>
+      Như Thế Nào?
+    </h1>
+    <div class="hero-line"></div>
+    <p style="text-align:center;max-width:520px;font-size:15px;">
+      Từ SQL thủ công và PowerBI → dashboard tương tác trong vài phút.<br>
+      Từ ý tưởng automation → ứng dụng chạy tự động hoàn toàn.
+    </p>
+    <div class="tag-row">
+      <span class="tag">📊 Dashboard</span>
+      <span class="tag">🤖 Automation</span>
+      <span class="tag">🔍 Amazon Research</span>
+      <span class="tag">⚡ AI Cowork</span>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 2: BỐI CẢNH ===================== -->
+  <div class="slide bg-gradient-2">
+    <div class="slide-subtitle">Bối Cảnh</div>
+    <h2 style="text-align:center;margin-bottom:24px;">
+      Tôi là ai trong chuỗi <span class="gradient-text">quyết định sản phẩm?</span>
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;width:100%;max-width:900px;">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:40px;margin-bottom:12px;">📊</div>
+        <h3>Dashboard</h3>
+        <p style="margin-top:8px;">Phân tích dữ liệu thị trường, trực quan hóa xu hướng niche Amazon</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:40px;margin-bottom:12px;">🧪</div>
+        <h3>Testing Sản Phẩm</h3>
+        <p style="margin-top:8px;">Kiểm tra trademark, đánh giá mức độ cạnh tranh, doanh thu tiềm năng</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:40px;margin-bottom:12px;">✅</div>
+        <h3>Go / No-Go</h3>
+        <p style="margin-top:8px;">Quyết định cuối cùng: có đi hàng hay không dựa trên dữ liệu thực</p>
+      </div>
+    </div>
+    <div style="margin-top:24px;padding:14px 24px;background:var(--surface);border:1px solid var(--border);border-radius:12px;max-width:700px;text-align:center;">
+      <p style="color:var(--text);font-size:14px;">
+        <strong>Pipeline thực tế:</strong> Keywords → Kiểm tra TM → Validate Amazon → Helium 10 → Quyết định đi hàng
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 3: TRƯỚC & SAU ===================== -->
+  <div class="slide bg-gradient-1">
+    <div class="slide-subtitle">Trước & Sau AI</div>
+    <h2 style="text-align:center;margin-bottom:24px;">Toàn Cảnh Thay Đổi</h2>
+    <div class="ba-grid">
+      <div class="ba-col">
+        <span class="ba-label ba-before">⏰ Trước khi có AI</span>
+        <div class="card">
+          <h3 style="margin-bottom:12px;color:#fca5a5;">Manual &amp; Linear</h3>
+          <div class="step-list" style="gap:8px;">
+            <div class="step-item" style="padding:12px 16px;">
+              <div style="font-size:20px;">📝</div>
+              <div><strong style="font-size:13px;">Viết SQL thủ công</strong><p style="font-size:12px;">Mỗi query mất 20–60 phút, dễ sai logic</p></div>
+            </div>
+            <div class="step-item" style="padding:12px 16px;">
+              <div style="font-size:20px;">🖥️</div>
+              <div><strong style="font-size:13px;">Cài đặt PowerBI</strong><p style="font-size:12px;">Kết nối nguồn, định dạng, publish — mất nhiều giờ</p></div>
+            </div>
+            <div class="step-item" style="padding:12px 16px;">
+              <div style="font-size:20px;">🐌</div>
+              <div><strong style="font-size:13px;">Script automation cơ bản</strong><p style="font-size:12px;">Chỉ làm được những gì đã biết code</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-col">
+        <span class="ba-label ba-after">✨ Sau khi có AI</span>
+        <div class="card">
+          <h3 style="margin-bottom:12px;color:#86efac;">Smart &amp; Scalable</h3>
+          <div class="step-list" style="gap:8px;">
+            <div class="step-item" style="padding:12px 16px;border-color:rgba(34,197,94,0.25);">
+              <div style="font-size:20px;">💬</div>
+              <div><strong style="font-size:13px;">Mô tả → Dashboard HTML</strong><p style="font-size:12px;">Prompt mô tả → dashboard tương tác trong vài phút</p></div>
+            </div>
+            <div class="step-item" style="padding:12px 16px;border-color:rgba(34,197,94,0.25);">
+              <div style="font-size:20px;">🚀</div>
+              <div><strong style="font-size:13px;">Full Automation App</strong><p style="font-size:12px;">7 bước pipeline tự động: keyword → TM → Amazon → Helium10</p></div>
+            </div>
+            <div class="step-item" style="padding:12px 16px;border-color:rgba(34,197,94,0.25);">
+              <div style="font-size:20px;">🧠</div>
+              <div><strong style="font-size:13px;">Mở ra góc nhìn mới</strong><p style="font-size:12px;">AI gợi ý cách tiếp cận mà mình chưa từng nghĩ đến</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 4: USE CASE 1 — INTRO ===================== -->
+  <div class="slide bg-gradient-2">
+    <div class="chip chip-orange">Use Case 1</div>
+    <h2 style="text-align:center;margin-bottom:8px;">
+      Từ <span class="gradient-text-orange">SQL + PowerBI</span><br>đến <span class="gradient-text">AI Dashboard Tương Tác</span>
+    </h2>
+    <div class="hero-line"></div>
+    <p style="text-align:center;max-width:600px;margin-bottom:24px;">
+      Thay vì mất nhiều giờ viết SQL, cài PowerBI, kết nối data — giờ tôi chỉ cần
+      <strong style="color:var(--text);">mô tả bằng ngôn ngữ tự nhiên</strong> những gì tôi muốn xem.
+    </p>
+    <div class="flow" style="max-width:1000px;gap:8px;">
+      <div class="flow-node" style="border-color:rgba(239,68,68,0.3);color:#fca5a5;font-size:12px;">Xuất CSV</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:rgba(239,68,68,0.3);color:#fca5a5;font-size:12px;">Viết SQL</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:rgba(239,68,68,0.3);color:#fca5a5;font-size:12px;">Cài PowerBI</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:rgba(239,68,68,0.3);color:#fca5a5;font-size:12px;">Publish &amp; Share</div>
+      <div class="flow-arrow" style="color:var(--yellow);font-size:26px;font-weight:900;">⟹</div>
+      <div class="flow-node highlight" style="border-color:rgba(34,197,94,0.4);color:#4ade80;background:rgba(34,197,94,0.15);font-size:12px;">Prompt cho AI → HTML Dashboard ✨</div>
+    </div>
+    <div style="margin-top:24px;display:grid;grid-template-columns:1fr auto 1fr;gap:16px;max-width:600px;align-items:center;">
+      <div style="text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:var(--orange);">~4 giờ</div>
+        <div style="font-size:12px;color:var(--muted);">Thời gian trước</div>
+      </div>
+      <div style="font-size:24px;color:var(--yellow);text-align:center;">→</div>
+      <div style="text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:var(--green);">~15 phút</div>
+        <div style="font-size:12px;color:var(--muted);">Với AI Cowork</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 5: IMAGE — BEFORE (PowerBI) ===================== -->
+  <div class="slide bg-gradient-2">
+    <div class="slide-subtitle">Use Case 1 — Trước AI</div>
+    <h2 style="text-align:center;margin-bottom:16px;">
+      Dashboard <span class="gradient-text-orange">PowerBI</span> — Cách Làm Cũ
+    </h2>
+    <div class="img-compare-grid" style="max-width:1100px;">
+      <!-- PowerBI Niche Tab -->
+      <div class="img-panel">
+        <div class="img-panel-header">
+          <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
+          <span class="img-panel-title">PowerBI — Tab: Niche Overview</span>
+        </div>
+        <div class="img-panel-body" id="panel-pbi-niche">
+          <img src="./images/powerbi_niche.png" alt="PowerBI Niche Dashboard"
+               onload="document.getElementById('ph-pbi-niche').style.display='none';"
+               onerror="this.style.display='none';document.getElementById('ph-pbi-niche').style.display='flex';">
+          <div id="ph-pbi-niche" class="img-placeholder" style="display:none;background:linear-gradient(135deg,rgba(249,115,22,0.08),rgba(239,68,68,0.05));">
+            <div class="ph-icon">📊</div>
+            <div class="ph-text">Screenshot PowerBI — Tab Niche<br><em>Opportunity Bubble Chart, Top 50 Revenue, Niche list</em></div>
+            <div class="ph-path">→ Lưu ảnh vào: images/powerbi_niche.png</div>
+          </div>
+        </div>
+      </div>
+      <!-- PowerBI ASIN Tab -->
+      <div class="img-panel">
+        <div class="img-panel-header">
+          <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
+          <span class="img-panel-title">PowerBI — Tab: ASINs Analysis</span>
+        </div>
+        <div class="img-panel-body">
+          <img src="./images/powerbi_asin.png" alt="PowerBI ASIN Dashboard"
+               onerror="this.style.display='none';document.getElementById('ph-pbi-asin').style.display='flex';">
+          <div id="ph-pbi-asin" class="img-placeholder" style="display:none;background:linear-gradient(135deg,rgba(249,115,22,0.08),rgba(239,68,68,0.05));">
+            <div class="ph-icon">📈</div>
+            <div class="ph-text">Screenshot PowerBI — Tab ASINs<br><em>Year Launching, Market Trend, Reviews vs Rating</em></div>
+            <div class="ph-path">→ Lưu ảnh vào: images/powerbi_asin.png</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 20px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:10px;max-width:700px;text-align:center;">
+      <p style="font-size:13px;color:#fca5a5;">
+        ⏱ Cần cài PowerBI Desktop, kết nối data source, viết DAX measure, định dạng visual, publish lên cloud
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 6: IMAGE — AFTER (AI Dashboard) ===================== -->
+  <div class="slide bg-gradient-1">
+    <div class="slide-subtitle">Use Case 1 — Sau AI</div>
+    <h2 style="text-align:center;margin-bottom:16px;">
+      Dashboard <span class="gradient-text">HTML tương tác</span> — Tạo bởi AI Cowork
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;width:100%;max-width:1100px;">
+      <!-- Overview Tab -->
+      <div class="img-panel">
+        <div class="img-panel-header">
+          <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
+          <span class="img-panel-title">Overview &amp; ASINs</span>
+        </div>
+        <div class="img-panel-body">
+          <img src="./images/ai_overview.png" alt="AI Dashboard Overview"
+               onerror="this.style.display='none';document.getElementById('ph-ai-1').style.display='flex';">
+          <div id="ph-ai-1" class="img-placeholder" style="display:none;background:rgba(99,102,241,0.05);">
+            <div class="ph-icon">🌐</div>
+            <div class="ph-text">Tab Overview &amp; ASINs<br><em>Bar charts: Top Categories, Top Niches</em></div>
+            <div class="ph-path">images/ai_overview.png</div>
+          </div>
+        </div>
+      </div>
+      <!-- Growth Tab -->
+      <div class="img-panel">
+        <div class="img-panel-header">
+          <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
+          <span class="img-panel-title">Niche Growth Analysis</span>
+        </div>
+        <div class="img-panel-body">
+          <img src="./images/ai_growth.png" alt="AI Dashboard Growth"
+               onerror="this.style.display='none';document.getElementById('ph-ai-2').style.display='flex';">
+          <div id="ph-ai-2" class="img-placeholder" style="display:none;background:rgba(99,102,241,0.05);">
+            <div class="ph-icon">📈</div>
+            <div class="ph-text">Tab Growth Analysis<br><em>HOT/RISING/STABLE KPI cards, Bubble chart</em></div>
+            <div class="ph-path">images/ai_growth.png</div>
+          </div>
+        </div>
+      </div>
+      <!-- Insights Tab -->
+      <div class="img-panel">
+        <div class="img-panel-header">
+          <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
+          <span class="img-panel-title">Market Insights</span>
+        </div>
+        <div class="img-panel-body">
+          <img src="./images/ai_insights.png" alt="AI Dashboard Insights"
+               onerror="this.style.display='none';document.getElementById('ph-ai-3').style.display='flex';">
+          <div id="ph-ai-3" class="img-placeholder" style="display:none;background:rgba(99,102,241,0.05);">
+            <div class="ph-icon">💡</div>
+            <div class="ph-text">Tab Market Insights<br><em>Top Niches by Growth %, Compare Niches, Radar</em></div>
+            <div class="ph-path">images/ai_insights.png</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 20px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);border-radius:10px;max-width:700px;text-align:center;">
+      <p style="font-size:13px;color:#86efac;">
+        ✨ Tôi mô tả những tab cần → AI Cowork viết HTML, CSS, JS → Chạy ngay trên browser, không cần cài gì thêm
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 7: USE CASE 1 — GIÁ TRỊ ===================== -->
+  <div class="slide bg-gradient-3">
+    <div class="slide-subtitle">Use Case 1 — Giá Trị</div>
+    <h2 style="text-align:center;margin-bottom:24px;">
+      Điều gì <span class="gradient-text-green">thực sự thay đổi?</span>
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;max-width:900px;">
+      <div class="card">
+        <h3 style="color:#fb923c;margin-bottom:14px;">📊 Trước — PowerBI</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;"><span style="color:#fca5a5;font-size:16px;">✗</span><p>Cần biết SQL, DAX, Power Query</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="color:#fca5a5;font-size:16px;">✗</span><p>Mỗi thay đổi visual cần publish lại</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="color:#fca5a5;font-size:16px;">✗</span><p>Bị giới hạn bởi template PowerBI</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="color:#fca5a5;font-size:16px;">✗</span><p>Phụ thuộc license &amp; cloud service</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color:#4ade80;margin-bottom:14px;">🤖 Sau — AI Cowork</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:16px;">✓</span><p>Chỉ cần mô tả bằng tiếng Việt / Anh</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:16px;">✓</span><p>HTML file — mở ngay, không cần cài gì</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:16px;">✓</span><p>Custom hoàn toàn: filter, tab, chart tùy ý</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:16px;">✓</span><p>Thay đổi ngay trong session — kết quả tức thì</p></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:14px 28px;background:var(--surface);border:1px solid rgba(251,191,36,0.3);border-radius:12px;max-width:700px;text-align:center;">
+      <p style="font-size:15px;color:#fde047;">
+        💡 <strong>Key shift:</strong> Từ "học công cụ" → "mô tả vấn đề". AI lo phần kỹ thuật.
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 8: USE CASE 2 — INTRO ===================== -->
+  <div class="slide bg-gradient-2">
+    <div class="chip chip-teal">Use Case 2</div>
+    <h2 style="text-align:center;margin-bottom:8px;">
+      Từ <span style="color:#fca5a5;">Script cơ bản</span><br>đến <span class="gradient-text">Ứng Dụng Automation Hoàn Chỉnh</span>
+    </h2>
+    <div class="hero-line"></div>
+    <p style="text-align:center;max-width:600px;margin-bottom:20px;">
+      AI Cowork <strong style="color:var(--text);">tự kết nối máy tính</strong>, cài Python environment, viết và chạy từng script — tôi chỉ cần mô tả bài toán và xác nhận từng bước.
+    </p>
+    <div class="pipeline-row">
+      <div class="pipe-node">
+        <div class="pipe-box active-node">TASKKWB1<br>Dedupe KW</div>
+        <div class="pipe-sub">Google Sheets</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">
+        <div class="pipe-box active-node">TASKKWB3<br>Gemini TM</div>
+        <div class="pipe-sub">Batch 100 KW</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">
+        <div class="pipe-box active-node">Electron<br>Trademarkia</div>
+        <div class="pipe-sub">Deep TM Check</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">
+        <div class="pipe-box active-node">TASKKWB2<br>Amazon</div>
+        <div class="pipe-sub">Selenium</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">
+        <div class="pipe-box active-node">TASKKWB4<br>Normalize</div>
+        <div class="pipe-sub">Gemini API</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">
+        <div class="pipe-box active-node">TASKKWB5<br>Helium 10</div>
+        <div class="pipe-sub">pyautogui</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">
+        <div class="pipe-box active-node">TASKKWB6<br>Images</div>
+        <div class="pipe-sub">undetected</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding:10px 20px;background:rgba(20,184,166,0.1);border:1px solid rgba(20,184,166,0.3);border-radius:10px;text-align:center;max-width:750px;">
+      <p style="font-size:13px;color:#5eead4;">
+        🤖 <strong>AI Cowork tự viết toàn bộ</strong> — kết nối Google Sheets API, Playwright CDP, Selenium, Gemini API, pyautogui, ~3,000 dòng code
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 9: USE CASE 2 — HOW IT WORKS ===================== -->
+  <div class="slide bg-gradient-1">
+    <div class="slide-subtitle">Use Case 2 — Quá Trình Thực Tế</div>
+    <h2 style="text-align:center;margin-bottom:20px;">Tôi làm gì? AI làm gì?</h2>
+    <div class="ba-grid" style="max-width:1000px;">
+      <div>
+        <div class="ba-label ba-before" style="margin-bottom:14px;">👤 Tôi làm (Domain Knowledge)</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Xác định bài toán</h4>
+              <p>Mô tả flow: keyword vào, kết quả ra, điều kiện nào thì SAFE/WARNING/REJECT</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Kiểm tra &amp; validate</h4>
+              <p>Xem kết quả từng bước, phát hiện lỗi logic nghiệp vụ (không phải lỗi code)</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Điều chỉnh rules</h4>
+              <p>Quyết định ngưỡng lọc: khi nào reject, khi nào approve sản phẩm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="ba-label ba-after" style="margin-bottom:14px;">🤖 AI làm (Technical Execution)</div>
+        <div class="step-list">
+          <div class="step-item" style="border-color:rgba(34,197,94,0.25);">
+            <div class="step-num" style="background:linear-gradient(135deg,#22c55e,#14b8a6);">A</div>
+            <div class="step-body">
+              <h4>Cài environment</h4>
+              <p>Python libs, credentials, kết nối Google Sheets API, debug port Playwright CDP</p>
+            </div>
+          </div>
+          <div class="step-item" style="border-color:rgba(34,197,94,0.25);">
+            <div class="step-num" style="background:linear-gradient(135deg,#22c55e,#14b8a6);">B</div>
+            <div class="step-body">
+              <h4>Viết &amp; chạy scripts</h4>
+              <p>7 script Python, ~3,000 dòng code, error handling, retry logic, rate limiting đầy đủ</p>
+            </div>
+          </div>
+          <div class="step-item" style="border-color:rgba(34,197,94,0.25);">
+            <div class="step-num" style="background:linear-gradient(135deg,#22c55e,#14b8a6);">C</div>
+            <div class="step-body">
+              <h4>Debug &amp; fix</h4>
+              <p>Tự đọc error log, tự sửa, không cần tôi biết Python hay biết API docs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 10: STRENGTHS ===================== -->
+  <div class="slide bg-gradient-3">
+    <div class="chip chip-green">Điểm Mạnh</div>
+    <h2 style="text-align:center;margin-bottom:24px;">
+      AI Mạnh Hơn Hẳn Ở <span class="gradient-text-green">Những Điều Này</span>
+    </h2>
+    <div class="sw-grid">
+      <div class="sw-item sw-strength">
+        <div class="sw-icon">⚡</div>
+        <div>
+          <h4>Nhanh hơn nhiều lần</h4>
+          <p>Việc tốn 4 giờ viết SQL + PowerBI nay xong trong 15 phút. Pipeline automation 3,000 dòng code được viết trong vài giờ thay vì vài tuần.</p>
+        </div>
+      </div>
+      <div class="sw-item sw-strength">
+        <div class="sw-icon">🔭</div>
+        <div>
+          <h4>Mở ra góc nhìn mới</h4>
+          <p>AI gợi ý cách tiếp cận kỹ thuật mà mình chưa biết: CDP protocol, undetected_chromedriver, multi-key fallback — các giải pháp chuyên nghiệp.</p>
+        </div>
+      </div>
+      <div class="sw-item sw-strength">
+        <div class="sw-icon">🏗️</div>
+        <div>
+          <h4>Kỹ thuật hơn, sâu hơn</h4>
+          <p>Không chỉ viết code đơn giản — AI thiết kế hệ thống có retry, error handling, rate limiting, batch processing, logging đầy đủ.</p>
+        </div>
+      </div>
+      <div class="sw-item sw-strength">
+        <div class="sw-icon">🔄</div>
+        <div>
+          <h4>Iterate không giới hạn</h4>
+          <p>Muốn thêm tab, đổi chart, thêm bước xử lý? Chỉ cần nói — AI sửa ngay trong session, không cần restart hay học lại từ đầu.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 11: WEAKNESSES ===================== -->
+  <div class="slide bg-gradient-2">
+    <div class="chip chip-red">Điểm Yếu</div>
+    <h2 style="text-align:center;margin-bottom:24px;">
+      Khi Nào AI <span style="color:#f87171;">Cho Kết Quả Sai?</span>
+    </h2>
+    <div class="sw-grid">
+      <div class="sw-item sw-weakness">
+        <div class="sw-icon">🎯</div>
+        <div>
+          <h4>Không có domain knowledge</h4>
+          <p>AI không biết "sticker 6-pack" khác với "sticker single". Nếu mình không chỉ rõ → AI filter sai → dữ liệu sai → quyết định sai.</p>
+        </div>
+      </div>
+      <div class="sw-item sw-weakness">
+        <div class="sw-icon">🐌</div>
+        <div>
+          <h4>Đôi khi chậm hơn làm tay</h4>
+          <p>Với task đơn giản mình đã quen, việc viết prompt rõ ràng + chờ AI + check kết quả đôi khi tốn hơn tự làm trực tiếp.</p>
+        </div>
+      </div>
+      <div class="sw-item sw-weakness">
+        <div class="sw-icon">🔍</div>
+        <div>
+          <h4>AI không biết context nội bộ</h4>
+          <p>Tên sheet tiếng Việt, logic nghiệp vụ đặc thù, quy trình riêng — AI sẽ đoán sai nếu mình không mô tả đầy đủ ngay từ đầu.</p>
+        </div>
+      </div>
+      <div class="sw-item sw-weakness">
+        <div class="sw-icon">⚠️</div>
+        <div>
+          <h4>Tự tin không có nghĩa là đúng</h4>
+          <p>AI trả kết quả rất tự tin nhưng có thể sai logic — đặc biệt các rule phức tạp, cần review kỹ trước khi chạy production.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 12: KEY INSIGHT ===================== -->
+  <div class="slide bg-gradient-1">
+    <div class="chip chip-yellow">Insight Cốt Lõi</div>
+    <div class="insight-box">
+      <div style="font-size:52px;margin-bottom:20px;">🧭</div>
+      <div class="big-quote" style="color:var(--text);margin-bottom:16px;">
+        "Biết <span class="gradient-text">mình cần gì</span>,<br>
+        AI sẽ làm <span class="gradient-text-green">nhanh hơn bất kỳ ai</span>."
+      </div>
+      <div class="hero-line" style="margin:20px auto;"></div>
+      <p style="max-width:580px;font-size:15px;margin:0 auto 24px;">
+        AI không thay thế domain knowledge — nó <strong style="color:var(--text);">khuếch đại</strong> nó.
+        Người hiểu bài toán sâu nhất sẽ nhận được nhiều nhất từ AI.
+      </p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;max-width:680px;margin:0 auto;">
+        <div style="text-align:center;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
+          <div style="font-size:22px;margin-bottom:6px;">🎯</div>
+          <p style="font-size:12px;color:var(--text);">Xác định vấn đề<br>rõ ràng</p>
+        </div>
+        <div style="text-align:center;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
+          <div style="font-size:22px;margin-bottom:6px;">🤝</div>
+          <p style="font-size:12px;color:var(--text);">Collaborate với AI<br>như colleague</p>
+        </div>
+        <div style="text-align:center;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
+          <div style="font-size:22px;margin-bottom:6px;">✅</div>
+          <p style="font-size:12px;color:var(--text);">Validate kết quả<br>bằng domain knowledge</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 13: CONCLUSION ===================== -->
+  <div class="slide bg-gradient-1">
+    <div class="chip chip-purple">Kết Luận</div>
+    <h2 style="text-align:center;margin-bottom:24px;">
+      Tương Lai của <span class="gradient-text">Market Research</span>
+    </h2>
+    <div class="conclusion-grid">
+      <div class="c-card">
+        <div class="icon">📊</div>
+        <h4>Dashboard trong Phút</h4>
+        <p>Không cần SQL, không cần PowerBI license — chỉ cần mô tả dữ liệu và mục tiêu phân tích</p>
+      </div>
+      <div class="c-card">
+        <div class="icon">🤖</div>
+        <h4>Automation Không Giới Hạn</h4>
+        <p>Từ keyword research đến Go/No-Go decision — pipeline 7 bước chạy tự động mỗi ngày</p>
+      </div>
+      <div class="c-card">
+        <div class="icon">🧠</div>
+        <h4>Domain Knowledge Là Lợi Thế</h4>
+        <p>Người hiểu thị trường sâu + biết dùng AI = năng suất gấp 10 lần so với làm thủ công</p>
+      </div>
+    </div>
+    <div style="margin-top:24px;padding:14px 28px;background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(20,184,166,0.15));border:1px solid rgba(99,102,241,0.4);border-radius:14px;text-align:center;max-width:680px;">
+      <p style="font-size:15px;color:var(--text);">
+        <strong>AI không phải magic wand</strong> — nó là <strong style="color:#a5b4fc;">force multiplier</strong> cho người đã giỏi trong lĩnh vực của mình. 🚀
+      </p>
+    </div>
+    <p style="margin-top:16px;font-size:12px;color:var(--muted);">Presented by Oanh &nbsp;·&nbsp; Grytt Market Research &nbsp;·&nbsp; 2026</p>
+  </div>
+
+</div><!-- end #deck -->
+
+<script>
+/* ============================================================
+   CLEAN BIDIRECTIONAL NAVIGATION ENGINE
+   Uses CSS keyframe animations — no inline style conflicts.
+   Forward:  exit left  / enter from right
+   Backward: exit right / enter from left
+   ============================================================ */
+
+const slides   = Array.from(document.querySelectorAll('#deck .slide'));
+const total    = slides.length;
+let   current  = 0;
+let   busy     = false;
+
+/* Build dot indicators */
+const dotsContainer = document.getElementById('dots');
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.addEventListener('click', () => { goToSlide(i); });
+  dotsContainer.appendChild(d);
+});
+
+function updateUI() {
+  const pct = total > 1 ? (current / (total - 1)) * 100 : 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('counter').textContent = (current + 1) + ' / ' + total;
+  document.getElementById('btn-prev').disabled = current === 0;
+  document.getElementById('btn-next').disabled = current === total - 1;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+}
+
+function goToSlide(target) {
+  if (busy || target === current || target < 0 || target >= total) return;
+  busy = true;
+
+  const fromSlide  = slides[current];
+  const toSlide    = slides[target];
+  const forward    = target > current;
+
+  const ANIM_DURATION = 420; // ms — matches CSS animation duration
+
+  /* 1. Instantly position 'to' off-screen with opacity:0, no animation */
+  toSlide.style.cssText = 'opacity:0; pointer-events:none;';
+  toSlide.classList.add('active');
+
+  /* 2. On next frame, apply animations to both */
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => { // double-rAF ensures the browser registers the initial state
+      toSlide.style.cssText = ''; // clear inline override — let CSS take over
+
+      fromSlide.classList.add(forward ? 'anim-exit'      : 'anim-exit-rev');
+      toSlide.classList.add(  forward ? 'anim-enter'     : 'anim-enter-rev');
+
+      /* 3. After animation ends, clean up */
+      setTimeout(() => {
+        fromSlide.classList.remove('active', 'anim-exit', 'anim-exit-rev');
+        toSlide.classList.remove(            'anim-enter', 'anim-enter-rev');
+        current = target;
+        busy    = false;
+        updateUI();
+      }, ANIM_DURATION + 20); // slight buffer over animation duration
+    });
+  });
+}
+
+/* Public navigate(delta) used by buttons */
+function navigate(delta) { goToSlide(current + delta); }
+
+/* Keyboard */
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ')  { e.preventDefault(); navigate(1);  }
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                     { e.preventDefault(); navigate(-1); }
+  if (e.key === 'Home')  { goToSlide(0); }
+  if (e.key === 'End')   { goToSlide(total - 1); }
+});
+
+/* Touch / swipe */
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, { passive: true });
+document.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+}, { passive: true });
+
+/* Init */
+updateUI();
+</script>
+</body>
+</html>
