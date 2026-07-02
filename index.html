@@ -23,7 +23,7 @@
     --border: rgba(99,102,241,0.25);
     --glow: 0 0 30px rgba(99,102,241,0.3);
   }
-  html, body { height: 100%; overflow: hidden; background: var(--bg); font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); font-size: 17px; }
+  html, body { height: 100%; overflow: hidden; background: var(--bg); font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); font-size: 18px; }
 
   /* ===== PRESENTATION SHELL ===== */
   #deck {
@@ -41,7 +41,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 48px 80px;
+    padding: 32px 56px;
     opacity: 0;
     pointer-events: none;
     will-change: transform, opacity;
@@ -135,10 +135,10 @@
   .chip-red    { background: rgba(239,68,68,0.2);  color: #f87171; border: 1px solid rgba(239,68,68,0.4); }
   .chip-yellow { background: rgba(251,191,36,0.2); color: #fde047; border: 1px solid rgba(251,191,36,0.4); }
 
-  h1 { font-size: clamp(38px, 5.5vw, 68px); font-weight: 800; line-height: 1.1; text-align: center; }
-  h2 { font-size: clamp(28px, 4vw, 50px); font-weight: 700; line-height: 1.2; }
-  h3 { font-size: clamp(18px, 2.5vw, 28px); font-weight: 600; }
-  p  { font-size: clamp(14px, 1.6vw, 18px); line-height: 1.7; color: var(--muted); }
+  h1 { font-size: clamp(44px, 6.5vw, 82px); font-weight: 800; line-height: 1.1; text-align: center; }
+  h2 { font-size: clamp(32px, 4.8vw, 62px); font-weight: 700; line-height: 1.2; }
+  h3 { font-size: clamp(22px, 3vw, 36px); font-weight: 600; }
+  p  { font-size: clamp(15px, 1.9vw, 21px); line-height: 1.7; color: var(--muted); }
 
   .gradient-text { background: linear-gradient(135deg, #a5b4fc, #5eead4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .gradient-text-orange { background: linear-gradient(135deg, #fb923c, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -149,7 +149,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 28px 32px;
+    padding: 34px 40px;
     position: relative;
     overflow: hidden;
   }
@@ -180,21 +180,21 @@
   /* ===== STEP CARDS ===== */
   .step-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 800px; }
   .step-item {
-    display: flex; align-items: flex-start; gap: 18px;
+    display: flex; align-items: flex-start; gap: 20px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 22px;
+    border-radius: 14px;
+    padding: 22px 28px;
   }
   .step-num {
-    width: 36px; height: 36px; min-width: 36px;
+    width: 42px; height: 42px; min-width: 42px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
     display: flex; align-items: center; justify-content: center;
-    font-size: 14px; font-weight: 700;
+    font-size: 16px; font-weight: 700;
   }
-  .step-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
-  .step-body p  { font-size: 14px; }
+  .step-body h4 { font-size: 19px; font-weight: 600; margin-bottom: 6px; }
+  .step-body p  { font-size: 15px; }
 
   /* ===== FLOW ARROWS ===== */
   .flow {
@@ -222,13 +222,13 @@
   }
   .sw-item {
     background: var(--surface);
-    border-radius: 12px;
-    padding: 22px 26px;
-    display: flex; gap: 16px; align-items: flex-start;
+    border-radius: 14px;
+    padding: 28px 32px;
+    display: flex; gap: 20px; align-items: flex-start;
   }
-  .sw-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
-  .sw-item h4 { font-size: 16px; font-weight: 600; margin-bottom: 7px; }
-  .sw-item p  { font-size: 14px; }
+  .sw-icon { font-size: 34px; flex-shrink: 0; margin-top: 2px; }
+  .sw-item h4 { font-size: 19px; font-weight: 600; margin-bottom: 8px; }
+  .sw-item p  { font-size: 15px; }
   .sw-strength { border: 1px solid rgba(34,197,94,0.3); }
   .sw-weakness { border: 1px solid rgba(239,68,68,0.3); }
 
@@ -348,21 +348,21 @@
   .pipe-box {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 11px 15px;
-    font-size: 12px; font-weight: 700;
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 14px; font-weight: 700;
     text-align: center;
-    min-width: 84px;
+    min-width: 100px;
     line-height: 1.4;
   }
   .pipe-box.active-node {
     background: rgba(99,102,241,0.2);
     border-color: var(--accent);
     color: #a5b4fc;
-    box-shadow: 0 0 12px rgba(99,102,241,0.25);
+    box-shadow: 0 0 16px rgba(99,102,241,0.3);
   }
-  .pipe-arrow { color: var(--muted); font-size: 16px; }
-  .pipe-sub { font-size: 10px; color: var(--muted); text-align: center; }
+  .pipe-arrow { color: var(--muted); font-size: 20px; }
+  .pipe-sub { font-size: 12px; color: var(--muted); text-align: center; margin-top: 2px; }
 
   /* ===== CONCLUSION ===== */
   .conclusion-grid {
@@ -515,27 +515,45 @@
       Thay vì mất nhiều giờ viết SQL, cài PowerBI, kết nối data — giờ em chỉ cần
       <strong style="color:var(--text);">mô tả bằng ngôn ngữ tự nhiên</strong> những gì em muốn xem.
     </p>
-    <div class="flow" style="max-width:1000px;gap:8px;">
-      <div class="flow-node" style="border-color:rgba(239,68,68,0.3);color:#fca5a5;font-size:12px;">Viết SQL<br>Clean Data</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node" style="border-color:rgba(239,68,68,0.3);color:#fca5a5;font-size:12px;">Xuất CSV</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node" style="border-color:rgba(239,68,68,0.3);color:#fca5a5;font-size:12px;">Input<br>PowerBI</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node" style="border-color:rgba(239,68,68,0.3);color:#fca5a5;font-size:12px;">Publish &amp; Share</div>
-      <div class="flow-arrow" style="color:var(--yellow);font-size:26px;font-weight:900;">⟹</div>
-      <div class="flow-node highlight" style="border-color:rgba(34,197,94,0.4);color:#4ade80;background:rgba(34,197,94,0.15);font-size:12px;">Prompt cho AI → HTML Dashboard ✨</div>
-    </div>
-    <div style="margin-top:24px;display:grid;grid-template-columns:1fr auto 1fr;gap:16px;max-width:600px;align-items:center;">
-      <div style="text-align:center;">
-        <div style="font-size:32px;font-weight:800;color:var(--orange);">~4 giờ</div>
-        <div style="font-size:12px;color:var(--muted);">Thời gian trước</div>
+    <!-- Flow comparison: grid 3 cột [nhóm đỏ] [⟹] [node xanh] -->
+    <div style="display:grid;grid-template-columns:auto 44px auto;align-items:start;gap:4px;max-width:1080px;justify-content:center;">
+
+      <!-- CỘT 1: 4 nodes đỏ + brace + ~4 giờ -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="flow-node" style="border-color:rgba(239,68,68,0.35);color:#fca5a5;padding:14px 18px;font-size:15px;font-weight:700;line-height:1.35;">Viết SQL<br>Clean Data</div>
+          <div class="flow-arrow" style="font-size:18px;">→</div>
+          <div class="flow-node" style="border-color:rgba(239,68,68,0.35);color:#fca5a5;padding:14px 18px;font-size:15px;font-weight:700;">Xuất CSV</div>
+          <div class="flow-arrow" style="font-size:18px;">→</div>
+          <div class="flow-node" style="border-color:rgba(239,68,68,0.35);color:#fca5a5;padding:14px 18px;font-size:15px;font-weight:700;line-height:1.35;">Input<br>PowerBI</div>
+          <div class="flow-arrow" style="font-size:18px;">→</div>
+          <div class="flow-node" style="border-color:rgba(239,68,68,0.35);color:#fca5a5;padding:14px 18px;font-size:15px;font-weight:700;">Publish &amp; Share</div>
+        </div>
+        <!-- Horizontal brace SVG (} nằm ngang, mở xuống) -->
+        <svg viewBox="0 0 560 38" style="width:100%;height:34px;" preserveAspectRatio="none">
+          <path d="M 6,4 Q 6,28 24,28 L 254,28 Q 280,36 280,36 Q 280,36 306,28 L 536,28 Q 554,28 554,4"
+                stroke="#f97316" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+        </svg>
+        <div style="color:var(--orange);font-size:clamp(22px,2.8vw,34px);font-weight:800;margin-top:4px;line-height:1.1;">~4 giờ</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:3px;">Thời gian trước</div>
       </div>
-      <div style="font-size:24px;color:var(--yellow);text-align:center;">→</div>
-      <div style="text-align:center;">
-        <div style="font-size:32px;font-weight:800;color:var(--green);">~15 phút</div>
-        <div style="font-size:12px;color:var(--muted);">Với AI Cowork</div>
+
+      <!-- CỘT 2: mũi tên ⟹ căn giữa node -->
+      <div style="display:flex;align-items:center;justify-content:center;padding-top:16px;">
+        <span style="font-size:28px;color:var(--yellow);font-weight:900;">⟹</span>
       </div>
+
+      <!-- CỘT 3: node xanh + ~30-45 phút giữa node -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="flow-node highlight" style="border-color:rgba(34,197,94,0.45);color:#4ade80;background:rgba(34,197,94,0.15);padding:14px 22px;font-size:15px;font-weight:700;white-space:nowrap;">
+          Prompt cho AI → HTML Dashboard ✨
+        </div>
+        <!-- Spacer đúng chiều cao brace + ~4giờ -->
+        <div style="height:34px;"></div>
+        <div style="color:var(--green);font-size:clamp(22px,2.8vw,34px);font-weight:800;margin-top:4px;line-height:1.1;">~30 - 45 phút</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:3px;">Với AI Cowork</div>
+      </div>
+
     </div>
   </div>
 
@@ -551,7 +569,7 @@
           <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
           <span class="img-panel-title">🔗 app.powerbi.com — Amazon Niche &amp; ASIN Dashboard (Public)</span>
         </div>
-        <div style="position:relative;width:100%;height:390px;background:#fff;overflow:hidden;border-radius:0 0 14px 14px;">
+        <div style="position:relative;width:100%;height:calc(100vh - 220px);min-height:380px;background:#fff;overflow:hidden;border-radius:0 0 14px 14px;">
           <iframe
             src="https://app.powerbi.com/view?r=eyJrIjoiZjlkMzY4MjQtMmZlZS00Y2RjLTlhZmItZTE3MmU3MDEwODkxIiwidCI6IjU1OTczNGNjLTZkMzYtNGZlOS05Zjk0LTgyMjExMjhlN2FiMiIsImMiOjEwfQ%3D%3D"
             style="width:100%;height:100%;border:none;display:block;"
@@ -578,11 +596,11 @@
       <div class="img-panel">
         <div class="img-panel-header">
           <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
-          <span class="img-panel-title">🤖 localhost:3000 — Amazon Niche &amp; ASIN Dashboard (AI-generated HTML)</span>
+          <span class="img-panel-title">🤖 Amazon Niche &amp; ASIN Dashboard (AI-generated HTML)</span>
         </div>
-        <div style="position:relative;width:100%;height:390px;background:#0f1117;overflow:hidden;border-radius:0 0 14px 14px;">
+        <div style="position:relative;width:100%;height:calc(100vh - 220px);min-height:380px;background:#0f1117;overflow:hidden;border-radius:0 0 14px 14px;">
           <iframe
-            src="http://localhost:3000/?id=13dee544-5107-4154-a2b8-fbff6c7aa439&gidzl=u0AGIaTqG73X7vbAHMD3SUCLc4vUDK1p-XNC7miqG7IfGv100sSSVwH4m4e5Oaj_fn76HcIJHUWDGdzFTG"
+            src="https://amazon-niche-dashboard.vercel.app/"
             style="width:100%;height:100%;border:none;display:block;"
             allowfullscreen="true"
             title="AI Dashboard">
@@ -641,53 +659,67 @@
       <strong style="color:var(--text);">Em chỉ cần mô tả Workflow, cài đặt Python environment và xác nhận từng bước</strong><br>
       <span style="color:var(--muted);">AI Cowork tự kết nối máy tính, viết và chạy từng script</span>
     </p>
+    <!-- Badge xanh lá — nguồn gốc, đặt TRÊN pipeline -->
+    <div style="padding:14px 48px;background:rgba(20,184,166,0.15);border:2px solid rgba(20,184,166,0.55);border-radius:18px;text-align:center;margin-bottom:10px;box-shadow:0 0 28px rgba(20,184,166,0.2);max-width:680px;">
+      <div style="font-size:clamp(17px,2.2vw,24px);color:#5eead4;font-weight:800;letter-spacing:0.01em;">
+        🤖 AI Cowork tự viết toàn bộ code
+      </div>
+    </div>
+
+    <!-- SVG fan arrows: xuất phát từ tâm dưới badge, tỏa ra đến giữa từng node -->
+    <svg viewBox="0 0 900 64" style="width:100%;max-width:900px;height:58px;display:block;margin:0 auto 4px;" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <marker id="ah8" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0,0 8,3 0,6" fill="#14b8a6"/>
+        </marker>
+      </defs>
+      <!-- Origin: center-bottom of badge = (450, 4) -->
+      <!-- 7 destinations evenly spread at y=58, x = 64, 193, 321, 450, 579, 707, 836 -->
+      <line x1="450" y1="4" x2="64"  y2="54" stroke="#14b8a6" stroke-width="1.8" opacity="0.85" marker-end="url(#ah8)"/>
+      <line x1="450" y1="4" x2="193" y2="54" stroke="#14b8a6" stroke-width="1.8" opacity="0.85" marker-end="url(#ah8)"/>
+      <line x1="450" y1="4" x2="321" y2="54" stroke="#14b8a6" stroke-width="1.8" opacity="0.85" marker-end="url(#ah8)"/>
+      <line x1="450" y1="4" x2="450" y2="54" stroke="#14b8a6" stroke-width="1.8" opacity="0.85" marker-end="url(#ah8)"/>
+      <line x1="450" y1="4" x2="579" y2="54" stroke="#14b8a6" stroke-width="1.8" opacity="0.85" marker-end="url(#ah8)"/>
+      <line x1="450" y1="4" x2="707" y2="54" stroke="#14b8a6" stroke-width="1.8" opacity="0.85" marker-end="url(#ah8)"/>
+      <line x1="450" y1="4" x2="836" y2="54" stroke="#14b8a6" stroke-width="1.8" opacity="0.85" marker-end="url(#ah8)"/>
+    </svg>
+
+    <!-- Pipeline tasks — thứ tự đúng + tên tools updated -->
     <div class="pipeline-row" style="gap:6px;">
       <div class="pipe-node">
-        <div style="font-size:18px;margin-bottom:4px;">⬇️</div>
         <div class="pipe-box active-node">Lọc<br>Keywords</div>
         <div class="pipe-sub">Google Sheets</div>
       </div>
       <div class="pipe-arrow">→</div>
       <div class="pipe-node">
-        <div style="font-size:18px;margin-bottom:4px;">⬇️</div>
         <div class="pipe-box active-node">Kiểm tra<br>Trademark</div>
         <div class="pipe-sub">Gemini AI</div>
       </div>
       <div class="pipe-arrow">→</div>
       <div class="pipe-node">
-        <div style="font-size:18px;margin-bottom:4px;">⬇️</div>
-        <div class="pipe-box active-node">Deep TM<br>Check</div>
-        <div class="pipe-sub">Trademarkia</div>
-      </div>
-      <div class="pipe-arrow">→</div>
-      <div class="pipe-node">
-        <div style="font-size:18px;margin-bottom:4px;">⬇️</div>
         <div class="pipe-box active-node">Validate<br>Amazon</div>
-        <div class="pipe-sub">Selenium</div>
+        <div class="pipe-sub">Amazon page</div>
       </div>
       <div class="pipe-arrow">→</div>
       <div class="pipe-node">
-        <div style="font-size:18px;margin-bottom:4px;">⬇️</div>
         <div class="pipe-box active-node">Chuẩn hóa<br>Keyword</div>
         <div class="pipe-sub">Gemini API</div>
       </div>
       <div class="pipe-arrow">→</div>
       <div class="pipe-node">
-        <div style="font-size:18px;margin-bottom:4px;">⬇️</div>
-        <div class="pipe-box active-node">Helium 10<br>Xray</div>
-        <div class="pipe-sub">pyautogui</div>
+        <div class="pipe-box active-node">Deep TM<br>Check</div>
+        <div class="pipe-sub">Trademarkia</div>
       </div>
       <div class="pipe-arrow">→</div>
       <div class="pipe-node">
-        <div style="font-size:18px;margin-bottom:4px;">⬇️</div>
-        <div class="pipe-box active-node">Lấy Ảnh<br>Sản Phẩm</div>
-        <div class="pipe-sub">undetected</div>
+        <div class="pipe-box active-node">Helium 10<br>Xray</div>
+        <div class="pipe-sub">H10</div>
       </div>
-    </div>
-    <div style="margin-top:14px;padding:10px 20px;background:rgba(20,184,166,0.1);border:1px solid rgba(20,184,166,0.3);border-radius:10px;text-align:center;max-width:750px;">
-      <p style="font-size:13px;color:#5eead4;">
-        🤖 <strong>AI Cowork tự viết toàn bộ code</strong> — Google Sheets API, Playwright CDP, Selenium, Gemini API, pyautogui, ~3,000 dòng
-      </p>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">
+        <div class="pipe-box active-node">Lấy Ảnh<br>Sản Phẩm</div>
+        <div class="pipe-sub">Information</div>
+      </div>
     </div>
   </div>
 
@@ -751,7 +783,876 @@
     </div>
   </div>
 
-  <!-- ===================== SLIDE 10: STRENGTHS ===================== -->
+  <!-- ===================== SLIDE 10: AI CODE DEMO — KW DEDUP ===================== -->
+  <div class="slide bg-gradient-2">
+    <div class="slide-subtitle">Use Case 2 — Ví Dụ Thực Tế</div>
+    <h2 style="text-align:center;margin-bottom:14px;">
+      Prompt → <span class="gradient-text">AI viết code</span> lọc trùng Keyword
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;width:100%;max-width:1200px;">
+
+      <!-- Panel trái: Prompt -->
+      <div class="img-panel">
+        <div class="img-panel-header">
+          <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
+          <span class="img-panel-title">💬 Prompt gửi AI Cowork</span>
+        </div>
+        <div style="background:#1a1a2e;padding:18px 20px;font-family:'Consolas','Courier New',monospace;font-size:12.5px;line-height:1.7;color:#e2e8f0;height:420px;overflow-y:auto;border-radius:0 0 14px 14px;">
+          <div style="color:#94a3b8;margin-bottom:10px;">Viết script Python làm việc này:</div>
+          <div style="color:#fbbf24;font-weight:700;margin-bottom:6px;">MỤC TIÊU:</div>
+          <div style="color:#e2e8f0;margin-bottom:12px;">Vào Google Sheet, tìm các keyword bị trùng trong sheet <span style="color:#a5b4fc;">"Tiềm_năng"</span> ở cột <span style="color:#a5b4fc;">"Keyword"</span>, xóa các dòng trùng đi — luôn <span style="color:#4ade80;font-weight:700;">GIỮ LẠI</span> dòng ở <span style="color:#4ade80;">TRÊN</span>, <span style="color:#f87171;font-weight:700;">XÓA</span> dòng ở <span style="color:#f87171;">DƯỚI</span>.</div>
+          <div style="color:#fbbf24;font-weight:700;margin-bottom:6px;">THÔNG TIN KẾT NỐI:</div>
+          <div style="color:#94a3b8;margin-bottom:2px;">- Dùng Google Sheets API, xác thực bằng Service Account JSON tại <span style="color:#5eead4;">"secrets/API_KEY.json"</span></div>
+          <div style="color:#94a3b8;margin-bottom:2px;">- Spreadsheet ID: <span style="color:#5eead4;">161wxoOt4l...KMKEbJs</span></div>
+          <div style="color:#94a3b8;margin-bottom:12px;">- Sheet name: <span style="color:#5eead4;">Tiềm_năng</span></div>
+          <div style="color:#fbbf24;font-weight:700;margin-bottom:6px;">FLOW HOẠT ĐỘNG:</div>
+          <div style="color:#e2e8f0;margin-bottom:2px;">1. Đọc toàn bộ dữ liệu từ sheet</div>
+          <div style="color:#e2e8f0;margin-bottom:2px;">2. So sánh keyword (không phân biệt hoa/thường, bỏ khoảng trắng thừa)</div>
+          <div style="color:#e2e8f0;margin-bottom:2px;">3. In danh sách các dòng trùng để user xem trước</div>
+          <div style="color:#e2e8f0;margin-bottom:2px;">4. Hỏi user: gõ <span style="color:#4ade80;font-weight:700;">YES</span> để xóa / <span style="color:#f87171;font-weight:700;">NO</span> để hủy</div>
+          <div style="color:#e2e8f0;margin-bottom:12px;">5. Nếu YES → xóa toàn bộ dòng trùng khỏi sheet</div>
+          <div style="color:#fbbf24;font-weight:700;margin-bottom:6px;">LƯU Ý QUAN TRỌNG:</div>
+          <div style="color:#f87171;">- Xóa từ dòng dưới cùng lên để không bị lệch số dòng</div>
+        </div>
+      </div>
+
+      <!-- Panel phải: Code kết quả -->
+      <div class="img-panel">
+        <div class="img-panel-header">
+          <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
+          <span class="img-panel-title">⚡ Kết quả: Code Python được AI tạo ra</span>
+        </div>
+        <div style="background:#0d1117;padding:18px 20px;font-family:'Consolas','Courier New',monospace;font-size:12px;line-height:1.75;color:#e6edf3;height:420px;overflow-y:auto;border-radius:0 0 14px 14px;">
+<pre style="margin:0;white-space:pre-wrap;"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">re</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">google.oauth2</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">service_account</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">googleapiclient.discovery</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">build</span>
+
+<span style="color: #f8f8f2">SERVICE_ACCOUNT_FILE</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;secrets/API_KEY.json&quot;</span>
+<span style="color: #f8f8f2">SPREADSHEET_ID</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;161wxoOt4l...KMKEbJs&quot;</span>
+<span style="color: #f8f8f2">SHEET_NAME</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Tiềm_năng&quot;</span>
+<span style="color: #f8f8f2">KEYWORD_HEADER</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Keyword&quot;</span>
+
+<span style="color: #f8f8f2">SCOPES</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;https://www.googleapis.com/auth/spreadsheets&quot;</span><span style="color: #f8f8f2">]</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">get_sheets_service</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">credentials</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">service_account</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Credentials</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">from_service_account_file(</span>
+        <span style="color: #f8f8f2">SERVICE_ACCOUNT_FILE,</span>
+        <span style="color: #f8f8f2">scopes</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">SCOPES,</span>
+    <span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">service</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">build(</span><span style="color: #e6db74">&quot;sheets&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;v4&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">credentials</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">credentials)</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">service</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">quote_sheet_name</span><span style="color: #f8f8f2">(sheet_name):</span>
+    <span style="color: #f8f8f2">escaped</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">sheet_name</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">replace(</span><span style="color: #e6db74">&quot;&#39;&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;&#39;&#39;&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #e6db74">f&quot;&#39;{</span><span style="color: #f8f8f2">escaped</span><span style="color: #e6db74">}&#39;&quot;</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">get_sheet_id_by_name</span><span style="color: #f8f8f2">(service,</span> <span style="color: #f8f8f2">spreadsheet_id,</span> <span style="color: #f8f8f2">sheet_name):</span>
+    <span style="color: #f8f8f2">spreadsheet</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">service</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spreadsheets()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span>
+        <span style="color: #f8f8f2">spreadsheetId</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">spreadsheet_id</span>
+    <span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">execute()</span>
+
+    <span style="color: #f8f8f2">sheets</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">spreadsheet</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span><span style="color: #e6db74">&quot;sheets&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">[])</span>
+
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">sheet</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">sheets:</span>
+        <span style="color: #f8f8f2">properties</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">sheet</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span><span style="color: #e6db74">&quot;properties&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{})</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">properties</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span><span style="color: #e6db74">&quot;title&quot;</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">sheet_name:</span>
+            <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">properties</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span><span style="color: #e6db74">&quot;sheetId&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #66d9ef">raise</span> <span style="color: #a6e22e">ValueError</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">f&quot;Không tìm thấy tab sheet tên: {</span><span style="color: #f8f8f2">sheet_name</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">normalize_text</span><span style="color: #f8f8f2">(value):</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">value</span> <span style="color: #f92672">is</span> <span style="color: #66d9ef">None</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #e6db74">&quot;&quot;</span>
+
+    <span style="color: #f8f8f2">text</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">str(value)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">lower()</span>
+    <span style="color: #f8f8f2">text</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sub(</span><span style="color: #e6db74">r&quot;\s+&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot; &quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">text)</span>
+
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">text</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">get_all_rows</span><span style="color: #f8f8f2">(service,</span> <span style="color: #f8f8f2">spreadsheet_id,</span> <span style="color: #f8f8f2">sheet_name):</span>
+    <span style="color: #f8f8f2">range_name</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">f&quot;{</span><span style="color: #f8f8f2">quote_sheet_name(sheet_name)</span><span style="color: #e6db74">}!A:Z&quot;</span>
+
+    <span style="color: #f8f8f2">result</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">service</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spreadsheets()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">values()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span>
+        <span style="color: #f8f8f2">spreadsheetId</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">spreadsheet_id,</span>
+        <span style="color: #f8f8f2">range</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">range_name,</span>
+    <span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">execute()</span>
+
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">result</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span><span style="color: #e6db74">&quot;values&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">[])</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">find_keyword_column_index</span><span style="color: #f8f8f2">(header_row,</span> <span style="color: #f8f8f2">keyword_header):</span>
+    <span style="color: #f8f8f2">target</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">normalize_text(keyword_header)</span>
+
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">index,</span> <span style="color: #f8f8f2">cell</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">enumerate(header_row):</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">normalize_text(cell)</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">target:</span>
+            <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">index</span>
+
+    <span style="color: #66d9ef">raise</span> <span style="color: #a6e22e">ValueError</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">f&#39;Không tìm thấy cột header tên &quot;{</span><span style="color: #f8f8f2">keyword_header</span><span style="color: #e6db74">}&quot;&#39;</span><span style="color: #f8f8f2">)</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">find_duplicate_keyword_rows</span><span style="color: #f8f8f2">(rows,</span> <span style="color: #f8f8f2">keyword_column_index):</span>
+    <span style="color: #f8f8f2">seen_keywords</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{}</span>
+    <span style="color: #f8f8f2">duplicate_rows</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[]</span>
+
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">row_index</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">range(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">len(rows)):</span>
+        <span style="color: #f8f8f2">row</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">rows[row_index]</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">keyword_column_index</span> <span style="color: #f92672">&gt;=</span> <span style="color: #f8f8f2">len(row):</span>
+            <span style="color: #66d9ef">continue</span>
+
+        <span style="color: #f8f8f2">raw_keyword</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">row[keyword_column_index]</span>
+        <span style="color: #f8f8f2">normalized_keyword</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">normalize_text(raw_keyword)</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">normalized_keyword:</span>
+            <span style="color: #66d9ef">continue</span>
+
+        <span style="color: #f8f8f2">actual_row_number</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">row_index</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">1</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">normalized_keyword</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">seen_keywords:</span>
+            <span style="color: #f8f8f2">duplicate_rows</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append({</span>
+                <span style="color: #e6db74">&quot;row_number&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">actual_row_number,</span>
+                <span style="color: #e6db74">&quot;keyword&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">raw_keyword,</span>
+                <span style="color: #e6db74">&quot;duplicate_of_row&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">seen_keywords[normalized_keyword][</span><span style="color: #e6db74">&quot;row_number&quot;</span><span style="color: #f8f8f2">],</span>
+                <span style="color: #e6db74">&quot;duplicate_of_keyword&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">seen_keywords[normalized_keyword][</span><span style="color: #e6db74">&quot;keyword&quot;</span><span style="color: #f8f8f2">],</span>
+            <span style="color: #f8f8f2">})</span>
+        <span style="color: #66d9ef">else</span><span style="color: #f8f8f2">:</span>
+            <span style="color: #f8f8f2">seen_keywords[normalized_keyword]</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
+                <span style="color: #e6db74">&quot;row_number&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">actual_row_number,</span>
+                <span style="color: #e6db74">&quot;keyword&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">raw_keyword,</span>
+            <span style="color: #f8f8f2">}</span>
+
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">duplicate_rows</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">delete_rows</span><span style="color: #f8f8f2">(service,</span> <span style="color: #f8f8f2">spreadsheet_id,</span> <span style="color: #f8f8f2">sheet_id,</span> <span style="color: #f8f8f2">row_numbers):</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">row_numbers:</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Không có dòng trùng để xóa.&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #66d9ef">return</span>
+
+    <span style="color: #75715e"># Xóa từ dưới lên để không bị lệch số dòng</span>
+    <span style="color: #f8f8f2">sorted_rows</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">sorted(row_numbers,</span> <span style="color: #f8f8f2">reverse</span><span style="color: #f92672">=</span><span style="color: #66d9ef">True</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">requests</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[]</span>
+
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">row_number</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">sorted_rows:</span>
+        <span style="color: #f8f8f2">requests</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append({</span>
+            <span style="color: #e6db74">&quot;deleteDimension&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">{</span>
+                <span style="color: #e6db74">&quot;range&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">{</span>
+                    <span style="color: #e6db74">&quot;sheetId&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">sheet_id,</span>
+                    <span style="color: #e6db74">&quot;dimension&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;ROWS&quot;</span><span style="color: #f8f8f2">,</span>
+                    <span style="color: #e6db74">&quot;startIndex&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">row_number</span> <span style="color: #f92672">-</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
+                    <span style="color: #e6db74">&quot;endIndex&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">row_number,</span>
+                <span style="color: #f8f8f2">}</span>
+            <span style="color: #f8f8f2">}</span>
+        <span style="color: #f8f8f2">})</span>
+
+    <span style="color: #f8f8f2">body</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #e6db74">&quot;requests&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">requests</span>
+    <span style="color: #f8f8f2">}</span>
+
+    <span style="color: #f8f8f2">service</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spreadsheets()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">batchUpdate(</span>
+        <span style="color: #f8f8f2">spreadsheetId</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">spreadsheet_id,</span>
+        <span style="color: #f8f8f2">body</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">body,</span>
+    <span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">execute()</span>
+
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;Đã xóa {</span><span style="color: #f8f8f2">len(sorted_rows)</span><span style="color: #e6db74">} dòng trùng.&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Các dòng đã xóa:&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">sorted_rows)</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">preview_duplicates</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">service</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">get_sheets_service()</span>
+
+    <span style="color: #f8f8f2">rows</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">get_all_rows(service,</span> <span style="color: #f8f8f2">SPREADSHEET_ID,</span> <span style="color: #f8f8f2">SHEET_NAME)</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">rows:</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Sheet đang trống.&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">[]</span>
+
+    <span style="color: #f8f8f2">header_row</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">rows[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
+    <span style="color: #f8f8f2">keyword_column_index</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">find_keyword_column_index(header_row,</span> <span style="color: #f8f8f2">KEYWORD_HEADER)</span>
+
+    <span style="color: #f8f8f2">duplicates</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">find_duplicate_keyword_rows(rows,</span> <span style="color: #f8f8f2">keyword_column_index)</span>
+
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;===== PREVIEW DUPLICATE KEYWORDS =====&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;Sheet: {</span><span style="color: #f8f8f2">SHEET_NAME</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;Cột Keyword: {</span><span style="color: #f8f8f2">KEYWORD_HEADER</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;Tổng số dòng: {</span><span style="color: #f8f8f2">len(rows)</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;Số dòng keyword trùng: {</span><span style="color: #f8f8f2">len(duplicates)</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">print()</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">duplicates:</span>
+        <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">item</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">duplicates:</span>
+            <span style="color: #f8f8f2">print(</span>
+                <span style="color: #e6db74">f&quot;Dòng {</span><span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&#39;row_number&#39;</span><span style="color: #f8f8f2">]</span><span style="color: #e6db74">} | &quot;</span>
+                <span style="color: #e6db74">f&quot;Keyword: {</span><span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&#39;keyword&#39;</span><span style="color: #f8f8f2">]</span><span style="color: #e6db74">} | &quot;</span>
+                <span style="color: #e6db74">f&quot;Trùng với dòng {</span><span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&#39;duplicate_of_row&#39;</span><span style="color: #f8f8f2">]</span><span style="color: #e6db74">}&quot;</span>
+            <span style="color: #f8f8f2">)</span>
+    <span style="color: #66d9ef">else</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Không có keyword trùng.&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">duplicates</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">dedupe_keywords</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">service</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">get_sheets_service()</span>
+
+    <span style="color: #f8f8f2">rows</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">get_all_rows(service,</span> <span style="color: #f8f8f2">SPREADSHEET_ID,</span> <span style="color: #f8f8f2">SHEET_NAME)</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">rows:</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Sheet đang trống.&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #66d9ef">return</span>
+
+    <span style="color: #f8f8f2">sheet_id</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">get_sheet_id_by_name(service,</span> <span style="color: #f8f8f2">SPREADSHEET_ID,</span> <span style="color: #f8f8f2">SHEET_NAME)</span>
+
+    <span style="color: #f8f8f2">header_row</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">rows[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
+    <span style="color: #f8f8f2">keyword_column_index</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">find_keyword_column_index(header_row,</span> <span style="color: #f8f8f2">KEYWORD_HEADER)</span>
+
+    <span style="color: #f8f8f2">duplicates</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">find_duplicate_keyword_rows(rows,</span> <span style="color: #f8f8f2">keyword_column_index)</span>
+
+    <span style="color: #f8f8f2">duplicate_row_numbers</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[item[</span><span style="color: #e6db74">&quot;row_number&quot;</span><span style="color: #f8f8f2">]</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">item</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">duplicates]</span>
+
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;===== DELETE DUPLICATE KEYWORDS =====&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;Sheet: {</span><span style="color: #f8f8f2">SHEET_NAME</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;Số dòng keyword trùng sẽ xóa: {</span><span style="color: #f8f8f2">len(duplicate_row_numbers)</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">delete_rows(</span>
+        <span style="color: #f8f8f2">service</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">service,</span>
+        <span style="color: #f8f8f2">spreadsheet_id</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">SPREADSHEET_ID,</span>
+        <span style="color: #f8f8f2">sheet_id</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">sheet_id,</span>
+        <span style="color: #f8f8f2">row_numbers</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">duplicate_row_numbers,</span>
+    <span style="color: #f8f8f2">)</span>
+
+
+<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">__name__</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;__main__&quot;</span><span style="color: #f8f8f2">:</span>
+    <span style="color: #75715e"># Mặc định chỉ preview, chưa xóa</span>
+    <span style="color: #f8f8f2">preview_duplicates()</span>
+
+    <span style="color: #66d9ef">while</span> <span style="color: #66d9ef">True</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #f8f8f2">confirm</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">input(</span>
+            <span style="color: #e6db74">&quot;</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">Bạn có muốn xóa các dòng trùng không? Gõ YES để xóa / Gõ NO để hủy: &quot;</span>
+        <span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">upper()</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">confirm</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;YES&quot;</span><span style="color: #f8f8f2">:</span>
+            <span style="color: #f8f8f2">dedupe_keywords()</span>
+            <span style="color: #66d9ef">break</span>
+        <span style="color: #66d9ef">elif</span> <span style="color: #f8f8f2">confirm</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;NO&quot;</span><span style="color: #f8f8f2">:</span>
+            <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Đã hủy. Chưa xóa dòng nào.&quot;</span><span style="color: #f8f8f2">)</span>
+            <span style="color: #66d9ef">break</span>
+        <span style="color: #66d9ef">else</span><span style="color: #f8f8f2">:</span>
+            <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Bạn gõ sai so với yêu cầu. Vui lòng chỉ gõ YES hoặc NO.&quot;</span><span style="color: #f8f8f2">)</span></pre>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-top:10px;padding:8px 24px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);border-radius:10px;max-width:900px;text-align:center;">
+      <p style="font-size:13px;color:#a5b4fc;">
+        ✍️ Em mô tả yêu cầu bằng ngôn ngữ tự nhiên → AI Cowork tạo ra ~220 dòng Python hoàn chỉnh, chạy được ngay
+      </p>
+    </div>
+  </div>
+
+
+  <!-- ===================== SLIDE 11: AI CODE DEMO — TM CHECK ===================== -->
+  <div class="slide bg-gradient-2">
+    <div class="slide-subtitle">Use Case 2 — Ví Dụ Thực Tế</div>
+    <h2 style="text-align:center;margin-bottom:14px;">
+      Prompt → <span class="gradient-text">AI viết code</span> Check Trademark Keyword
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;width:100%;max-width:1200px;">
+
+      <!-- Panel trái: Prompt -->
+      <div class="img-panel">
+        <div class="img-panel-header">
+          <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
+          <span class="img-panel-title">💬 Prompt gửi AI Cowork</span>
+        </div>
+        <div style="background:#1a1a2e;padding:18px 20px;font-family:'Consolas','Courier New',monospace;font-size:12.5px;line-height:1.7;color:#e2e8f0;height:420px;overflow-y:auto;border-radius:0 0 14px 14px;">
+          <div style="color:#94a3b8;margin-bottom:10px;">Viết script Python làm việc này:</div>
+          <div style="color:#fbbf24;font-weight:700;margin-bottom:6px;">MỤC TIÊU:</div>
+          <div style="color:#e2e8f0;margin-bottom:12px;">Đọc keyword từ Google Sheet, nhờ <span style="color:#a5b4fc;">Gemini AI</span> đánh giá rủi ro trademark, rồi ghi kết quả vào cột <span style="color:#a5b4fc;">"Check TM"</span>.</div>
+          <div style="color:#fbbf24;font-weight:700;margin-bottom:6px;">THÔNG TIN KẾT NỐI:</div>
+          <div style="color:#94a3b8;margin-bottom:2px;">- Xác thực Google Sheets bằng Service Account JSON tại <span style="color:#5eead4;">"secrets/API_KEY.json"</span></div>
+          <div style="color:#94a3b8;margin-bottom:2px;">- Spreadsheet ID: <span style="color:#5eead4;">161wxoOt4l...KMKEbJs</span></div>
+          <div style="color:#94a3b8;margin-bottom:2px;">- Sheet: <span style="color:#5eead4;">Tiềm_năng</span> | Cột kết quả: <span style="color:#5eead4;">"Check TM"</span></div>
+          <div style="color:#94a3b8;margin-bottom:12px;">- Nếu cột "Check TM" chưa có thì tự tạo thêm</div>
+          <div style="color:#fbbf24;font-weight:700;margin-bottom:6px;">FLOW HOẠT ĐỘNG:</div>
+          <div style="color:#e2e8f0;margin-bottom:2px;">1. Đọc các keyword chưa có giá trị ở cột Check TM</div>
+          <div style="color:#e2e8f0;margin-bottom:2px;">2. Chia thành batch 100 keyword, gửi lên Gemini để hỏi</div>
+          <div style="color:#e2e8f0;margin-bottom:2px;">3. Gemini trả về: keyword nào rủi ro thì <span style="color:#f87171;font-weight:700;">WARNING</span>, không thì <span style="color:#4ade80;font-weight:700;">SAFE</span></div>
+          <div style="color:#e2e8f0;margin-bottom:2px;">4. Ghi WARNING vào cột Check TM — keyword SAFE thì để trống</div>
+          <div style="color:#e2e8f0;margin-bottom:12px;">5. In tổng kết cuối: bao nhiêu WARNING / SAFE / lỗi</div>
+          <div style="color:#fbbf24;font-weight:700;margin-bottom:6px;">CÁCH GỬI GEMINI:</div>
+          <div style="color:#94a3b8;margin-bottom:2px;">- Dùng Selenium mở Chrome, vào gemini.google.com</div>
+          <div style="color:#94a3b8;margin-bottom:2px;">- Chrome lưu profile tại <span style="color:#5eead4;">"chrome_profiles/gemini"</span> để giữ đăng nhập</div>
+          <div style="color:#94a3b8;margin-bottom:2px;">- Dùng pyperclip paste prompt vào ô chat (tránh lỗi ký tự)</div>
+          <div style="color:#94a3b8;margin-bottom:2px;">- Mỗi batch mở chat mới, đợi tối đa 120s lấy kết quả</div>
+          <div style="color:#94a3b8;margin-bottom:12px;">- Kết quả Gemini trả về nằm giữa tag <span style="color:#f472b6;">BEGIN_RESULT</span> và <span style="color:#f472b6;">END_RESULT</span></div>
+          <div style="color:#fbbf24;font-weight:700;margin-bottom:6px;">TIÊU CHÍ GEMINI ĐÁNH GIÁ WARNING:</div>
+          <div style="color:#f87171;">Thương hiệu, tên nhân vật, ca sĩ/diễn viên nổi tiếng,<br>franchise game/anime/phim, hoặc thuộc class 16 trademarkia</div>
+        </div>
+      </div>
+
+      <!-- Panel phải: Code kết quả -->
+      <div class="img-panel">
+        <div class="img-panel-header">
+          <div class="dot-row"><span class="dot-red"></span><span class="dot-yel"></span><span class="dot-grn"></span></div>
+          <span class="img-panel-title">⚡ Kết quả: Code Python được AI tạo ra</span>
+        </div>
+        <div style="background:#0d1117;padding:18px 20px;font-family:'Consolas','Courier New',monospace;font-size:12px;line-height:1.75;color:#e6edf3;height:420px;overflow-y:auto;border-radius:0 0 14px 14px;">
+<pre style="margin:0;white-space:pre-wrap;"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">os</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">re</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">time</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">pyperclip</span>
+
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">google.oauth2</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">service_account</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">googleapiclient.discovery</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">build</span>
+
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">selenium</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">webdriver</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">selenium.webdriver.common.by</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">By</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">selenium.webdriver.chrome.options</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">Options</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">selenium.webdriver.common.keys</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">Keys</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">selenium.webdriver.support.ui</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">WebDriverWait</span>
+
+
+<span style="color: #75715e"># =========================================================</span>
+<span style="color: #75715e"># CẤU HÌNH — SỬA TẠI ĐÂY NẾU CẦN</span>
+<span style="color: #75715e"># =========================================================</span>
+
+<span style="color: #f8f8f2">SERVICE_ACCOUNT_FILE</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;secrets/API_KEY.json&quot;</span>
+
+<span style="color: #f8f8f2">SPREADSHEET_ID</span>    <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;161wxoOt4l...KMKEbJs&quot;</span>
+<span style="color: #f8f8f2">SOURCE_SHEET_NAME</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Tiềm_năng&quot;</span>
+<span style="color: #f8f8f2">KEYWORD_HEADER</span>    <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Keyword&quot;</span>
+<span style="color: #f8f8f2">CHECK_TM_HEADER</span>   <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Check TM&quot;</span>
+
+<span style="color: #75715e"># Số keyword gửi Gemini mỗi batch</span>
+<span style="color: #f8f8f2">BATCH_SIZE</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">100</span>
+
+<span style="color: #75715e"># Giá trị ghi vào cột Check TM</span>
+<span style="color: #f8f8f2">WRITE_WARNING_VALUE</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;WARNING&quot;</span>   <span style="color: #75715e"># ghi khi có rủi ro trademark</span>
+<span style="color: #f8f8f2">WRITE_SAFE_VALUE</span>    <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;SAFE&quot;</span>      <span style="color: #75715e"># ghi khi không có rủi ro (&quot;&quot; = để trống)</span>
+
+<span style="color: #75715e"># Giây chờ Gemini trả kết quả (tối đa)</span>
+<span style="color: #75715e"># Nên để ≥ 90s cho batch 100 keyword</span>
+<span style="color: #f8f8f2">RESPONSE_TIMEOUT_SECONDS</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">120</span>
+
+<span style="color: #75715e"># Đường dẫn Chrome profile (lưu đăng nhập Gemini)</span>
+<span style="color: #f8f8f2">CHROME_PROFILE_DIR</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">os</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">path</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">abspath(</span><span style="color: #e6db74">&quot;chrome_profiles/gemini&quot;</span><span style="color: #f8f8f2">)</span>
+
+<span style="color: #f8f8f2">GEMINI_URL</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;https://gemini.google.com/app&quot;</span>
+
+
+<span style="color: #75715e"># =========================================================</span>
+<span style="color: #75715e"># GOOGLE SHEETS</span>
+<span style="color: #75715e"># =========================================================</span>
+
+<span style="color: #f8f8f2">SCOPES</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;https://www.googleapis.com/auth/spreadsheets&quot;</span><span style="color: #f8f8f2">]</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">get_sheets_service</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">credentials</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">service_account</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Credentials</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">from_service_account_file(</span>
+        <span style="color: #f8f8f2">SERVICE_ACCOUNT_FILE,</span>
+        <span style="color: #f8f8f2">scopes</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">SCOPES,</span>
+    <span style="color: #f8f8f2">)</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">build(</span><span style="color: #e6db74">&quot;sheets&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;v4&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">credentials</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">credentials)</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">quote_sheet_name</span><span style="color: #f8f8f2">(sheet_name):</span>
+    <span style="color: #f8f8f2">escaped</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">sheet_name</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">replace(</span><span style="color: #e6db74">&quot;&#39;&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;&#39;&#39;&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #e6db74">f&quot;&#39;{</span><span style="color: #f8f8f2">escaped</span><span style="color: #e6db74">}&#39;&quot;</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">normalize_text</span><span style="color: #f8f8f2">(value):</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">value</span> <span style="color: #f92672">is</span> <span style="color: #66d9ef">None</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #e6db74">&quot;&quot;</span>
+    <span style="color: #f8f8f2">text</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">str(value)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">lower()</span>
+    <span style="color: #f8f8f2">text</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sub(</span><span style="color: #e6db74">r&quot;\s+&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot; &quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">text)</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">text</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">strip_markdown</span><span style="color: #f8f8f2">(text):</span>
+    <span style="color: #e6db74">&quot;&quot;&quot;Loại bỏ ký tự markdown mà Gemini hay thêm vào: **bold**, *italic*, `code`.&quot;&quot;&quot;</span>
+    <span style="color: #f8f8f2">text</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sub(</span><span style="color: #e6db74">r&quot;\*{1,3}(.+?)\*{1,3}&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">r&quot;\1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">text)</span>   <span style="color: #75715e"># **bold** / *italic*</span>
+    <span style="color: #f8f8f2">text</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sub(</span><span style="color: #e6db74">r&quot;`(.+?)`&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">r&quot;\1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">text)</span>                 <span style="color: #75715e"># `code`</span>
+    <span style="color: #f8f8f2">text</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sub(</span><span style="color: #e6db74">r&quot;_{1,2}(.+?)_{1,2}&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">r&quot;\1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">text)</span>       <span style="color: #75715e"># _italic_ / __bold__</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">text</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip()</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">column_index_to_letter</span><span style="color: #f8f8f2">(index_zero_based):</span>
+    <span style="color: #f8f8f2">number</span>  <span style="color: #f92672">=</span> <span style="color: #f8f8f2">index_zero_based</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">1</span>
+    <span style="color: #f8f8f2">letters</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;</span>
+    <span style="color: #66d9ef">while</span> <span style="color: #f8f8f2">number:</span>
+        <span style="color: #f8f8f2">number,</span> <span style="color: #f8f8f2">remainder</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">divmod(number</span> <span style="color: #f92672">-</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">26</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #f8f8f2">letters</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">chr(</span><span style="color: #ae81ff">65</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">remainder)</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">letters</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">letters</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">get_all_rows</span><span style="color: #f8f8f2">(service,</span> <span style="color: #f8f8f2">spreadsheet_id,</span> <span style="color: #f8f8f2">sheet_name):</span>
+    <span style="color: #f8f8f2">result</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">service</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spreadsheets()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">values()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span>
+        <span style="color: #f8f8f2">spreadsheetId</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">spreadsheet_id,</span>
+        <span style="color: #f8f8f2">range</span><span style="color: #f92672">=</span><span style="color: #e6db74">f&quot;{</span><span style="color: #f8f8f2">quote_sheet_name(sheet_name)</span><span style="color: #e6db74">}!A:ZZ&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">execute()</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">result</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span><span style="color: #e6db74">&quot;values&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">[])</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">find_header_column_index</span><span style="color: #f8f8f2">(header_row,</span> <span style="color: #f8f8f2">header_name):</span>
+    <span style="color: #f8f8f2">target</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">normalize_text(header_name)</span>
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">index,</span> <span style="color: #f8f8f2">cell</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">enumerate(header_row):</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">normalize_text(cell)</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">target:</span>
+            <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">index</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">ensure_header_column</span><span style="color: #f8f8f2">(service,</span> <span style="color: #f8f8f2">spreadsheet_id,</span> <span style="color: #f8f8f2">sheet_name,</span> <span style="color: #f8f8f2">header_name):</span>
+    <span style="color: #f8f8f2">rows</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">get_all_rows(service,</span> <span style="color: #f8f8f2">spreadsheet_id,</span> <span style="color: #f8f8f2">sheet_name)</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">rows:</span>
+        <span style="color: #66d9ef">raise</span> <span style="color: #a6e22e">ValueError</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">f&#39;Sheet &quot;{</span><span style="color: #f8f8f2">sheet_name</span><span style="color: #e6db74">}&quot; đang trống hoặc chưa có header.&#39;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">header_row</span>     <span style="color: #f92672">=</span> <span style="color: #f8f8f2">rows[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
+    <span style="color: #f8f8f2">existing_index</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">find_header_column_index(header_row,</span> <span style="color: #f8f8f2">header_name)</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">existing_index</span> <span style="color: #f92672">!=</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">existing_index</span>
+
+    <span style="color: #f8f8f2">new_col_index</span>  <span style="color: #f92672">=</span> <span style="color: #f8f8f2">len(header_row)</span>
+    <span style="color: #f8f8f2">new_col_letter</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">column_index_to_letter(new_col_index)</span>
+
+    <span style="color: #f8f8f2">service</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spreadsheets()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">values()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">update(</span>
+        <span style="color: #f8f8f2">spreadsheetId</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">spreadsheet_id,</span>
+        <span style="color: #f8f8f2">range</span><span style="color: #f92672">=</span><span style="color: #e6db74">f&quot;{</span><span style="color: #f8f8f2">quote_sheet_name(sheet_name)</span><span style="color: #e6db74">}!{</span><span style="color: #f8f8f2">new_col_letter</span><span style="color: #e6db74">}1&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #f8f8f2">valueInputOption</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;USER_ENTERED&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #f8f8f2">body</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">{</span><span style="color: #e6db74">&quot;values&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">[[header_name]]},</span>
+    <span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">execute()</span>
+
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&#39;Đã tạo thêm cột &quot;{</span><span style="color: #f8f8f2">header_name</span><span style="color: #e6db74">}&quot; tại cột {</span><span style="color: #f8f8f2">new_col_letter</span><span style="color: #e6db74">}.&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">new_col_index</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">get_unchecked_keywords</span><span style="color: #f8f8f2">(service,</span> <span style="color: #f8f8f2">spreadsheet_id,</span> <span style="color: #f8f8f2">sheet_name):</span>
+    <span style="color: #e6db74">&quot;&quot;&quot;Lấy keywords chưa có giá trị trong cột Check TM.&quot;&quot;&quot;</span>
+    <span style="color: #f8f8f2">rows</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">get_all_rows(service,</span> <span style="color: #f8f8f2">spreadsheet_id,</span> <span style="color: #f8f8f2">sheet_name)</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">rows:</span>
+        <span style="color: #66d9ef">raise</span> <span style="color: #a6e22e">ValueError</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">f&#39;Sheet &quot;{</span><span style="color: #f8f8f2">sheet_name</span><span style="color: #e6db74">}&quot; đang trống.&#39;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">header_row</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">rows[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
+
+    <span style="color: #f8f8f2">keyword_col_index</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">find_header_column_index(header_row,</span> <span style="color: #f8f8f2">KEYWORD_HEADER)</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">keyword_col_index</span> <span style="color: #f92672">==</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #66d9ef">raise</span> <span style="color: #a6e22e">ValueError</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">f&#39;Không tìm thấy cột &quot;{</span><span style="color: #f8f8f2">KEYWORD_HEADER</span><span style="color: #e6db74">}&quot;.&#39;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">check_tm_col_index</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ensure_header_column(</span>
+        <span style="color: #f8f8f2">service,</span> <span style="color: #f8f8f2">spreadsheet_id,</span> <span style="color: #f8f8f2">sheet_name,</span> <span style="color: #f8f8f2">CHECK_TM_HEADER</span>
+    <span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">keywords</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[]</span>
+
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">row_index</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">range(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">len(rows)):</span>
+        <span style="color: #f8f8f2">row</span>     <span style="color: #f92672">=</span> <span style="color: #f8f8f2">rows[row_index]</span>
+        <span style="color: #f8f8f2">keyword</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">row[keyword_col_index]</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">keyword_col_index</span> <span style="color: #f92672">&lt;</span> <span style="color: #f8f8f2">len(row)</span> <span style="color: #66d9ef">else</span> <span style="color: #e6db74">&quot;&quot;</span>
+        <span style="color: #f8f8f2">keyword</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">str(keyword)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip()</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">keyword:</span>
+            <span style="color: #66d9ef">continue</span>
+
+        <span style="color: #75715e"># Bỏ qua keyword đã có giá trị trong cột Check TM</span>
+        <span style="color: #f8f8f2">check_tm_val</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">row[check_tm_col_index]</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">check_tm_col_index</span> <span style="color: #f92672">&lt;</span> <span style="color: #f8f8f2">len(row)</span> <span style="color: #66d9ef">else</span> <span style="color: #e6db74">&quot;&quot;</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">str(check_tm_val)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip():</span>
+            <span style="color: #66d9ef">continue</span>
+
+        <span style="color: #f8f8f2">keywords</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append({</span>
+            <span style="color: #e6db74">&quot;row_number&quot;</span><span style="color: #f8f8f2">:</span>         <span style="color: #f8f8f2">row_index</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;keyword&quot;</span><span style="color: #f8f8f2">:</span>            <span style="color: #f8f8f2">keyword,</span>
+            <span style="color: #e6db74">&quot;check_tm_col_index&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">check_tm_col_index,</span>
+        <span style="color: #f8f8f2">})</span>
+
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">keywords</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">update_check_tm_values</span><span style="color: #f8f8f2">(service,</span> <span style="color: #f8f8f2">spreadsheet_id,</span> <span style="color: #f8f8f2">sheet_name,</span> <span style="color: #f8f8f2">keyword_items,</span> <span style="color: #f8f8f2">result_map):</span>
+    <span style="color: #f8f8f2">updates</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[]</span>
+
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">item</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">keyword_items:</span>
+        <span style="color: #f8f8f2">keyword</span>            <span style="color: #f92672">=</span> <span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&quot;keyword&quot;</span><span style="color: #f8f8f2">]</span>
+        <span style="color: #f8f8f2">row_number</span>         <span style="color: #f92672">=</span> <span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&quot;row_number&quot;</span><span style="color: #f8f8f2">]</span>
+        <span style="color: #f8f8f2">check_tm_col_index</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&quot;check_tm_col_index&quot;</span><span style="color: #f8f8f2">]</span>
+        <span style="color: #f8f8f2">normalized_keyword</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">normalize_text(keyword)</span>
+
+        <span style="color: #f8f8f2">status</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">result_map</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(normalized_keyword)</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">status</span> <span style="color: #f92672">is</span> <span style="color: #66d9ef">None</span><span style="color: #f8f8f2">:</span>
+            <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&#39;  [!] Gemini bỏ sót: &quot;{</span><span style="color: #f8f8f2">keyword</span><span style="color: #e6db74">}&quot; → ghi WARNING để review.&#39;</span><span style="color: #f8f8f2">)</span>
+            <span style="color: #f8f8f2">status</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;WARNING&quot;</span>
+
+        <span style="color: #f8f8f2">write_value</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">WRITE_WARNING_VALUE</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">status</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;WARNING&quot;</span> <span style="color: #66d9ef">else</span> <span style="color: #f8f8f2">WRITE_SAFE_VALUE</span>
+
+        <span style="color: #75715e"># Nếu WRITE_SAFE_VALUE = &quot;&quot; thì bỏ qua dòng SAFE (không ghi gì)</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">write_value</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f8f8f2">:</span>
+            <span style="color: #66d9ef">continue</span>
+
+        <span style="color: #f8f8f2">col_letter</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">column_index_to_letter(check_tm_col_index)</span>
+        <span style="color: #f8f8f2">updates</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append({</span>
+            <span style="color: #e6db74">&quot;range&quot;</span><span style="color: #f8f8f2">:</span>  <span style="color: #e6db74">f&quot;{</span><span style="color: #f8f8f2">quote_sheet_name(sheet_name)</span><span style="color: #e6db74">}!{</span><span style="color: #f8f8f2">col_letter</span><span style="color: #e6db74">}{</span><span style="color: #f8f8f2">row_number</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;values&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">[[write_value]],</span>
+        <span style="color: #f8f8f2">})</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">updates:</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;  Không có dữ liệu Check TM nào để cập nhật.&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #66d9ef">return</span>
+
+    <span style="color: #f8f8f2">service</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spreadsheets()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">values()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">batchUpdate(</span>
+        <span style="color: #f8f8f2">spreadsheetId</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">spreadsheet_id,</span>
+        <span style="color: #f8f8f2">body</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">{</span><span style="color: #e6db74">&quot;valueInputOption&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;USER_ENTERED&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;data&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">updates},</span>
+    <span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">execute()</span>
+
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  ✓ Đã cập nhật {</span><span style="color: #f8f8f2">len(updates)</span><span style="color: #e6db74">} dòng vào cột Check TM.&quot;</span><span style="color: #f8f8f2">)</span>
+
+
+<span style="color: #75715e"># =========================================================</span>
+<span style="color: #75715e"># GEMINI WEB AUTOMATION</span>
+<span style="color: #75715e"># =========================================================</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">create_chrome_driver</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">os</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">makedirs(CHROME_PROFILE_DIR,</span> <span style="color: #f8f8f2">exist_ok</span><span style="color: #f92672">=</span><span style="color: #66d9ef">True</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">options</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Options()</span>
+    <span style="color: #f8f8f2">options</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_argument(</span><span style="color: #e6db74">&quot;--start-maximized&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">options</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_argument(</span><span style="color: #e6db74">&quot;--lang=en-US&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">options</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_argument(</span><span style="color: #e6db74">f&quot;--user-data-dir={</span><span style="color: #f8f8f2">CHROME_PROFILE_DIR</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">driver</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">webdriver</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Chrome(options</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">options)</span>
+    <span style="color: #f8f8f2">driver</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">set_page_load_timeout(</span><span style="color: #ae81ff">60</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">driver</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">wait_for_gemini_ready</span><span style="color: #f8f8f2">(driver):</span>
+    <span style="color: #f8f8f2">driver</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(GEMINI_URL)</span>
+
+    <span style="color: #f8f8f2">print()</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Chrome Gemini đã mở.&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Nếu đây là lần đầu, hãy đăng nhập Gemini trong cửa sổ Chrome vừa mở.&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">input(</span><span style="color: #e6db74">&quot;Sau khi Gemini đã sẵn sàng để chat, bấm ENTER tại terminal để tiếp tục...&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">WebDriverWait(driver,</span> <span style="color: #ae81ff">60</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">until(</span>
+        <span style="color: #66d9ef">lambda</span> <span style="color: #f8f8f2">d:</span> <span style="color: #f8f8f2">len(d</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">find_elements(</span>
+            <span style="color: #f8f8f2">By</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">CSS_SELECTOR,</span> <span style="color: #e6db74">&quot;div[contenteditable=&#39;true&#39;], textarea&quot;</span>
+        <span style="color: #f8f8f2">))</span> <span style="color: #f92672">&gt;</span> <span style="color: #ae81ff">0</span>
+    <span style="color: #f8f8f2">)</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">open_new_gemini_chat</span><span style="color: #f8f8f2">(driver):</span>
+    <span style="color: #e6db74">&quot;&quot;&quot;Mở conversation mới để tránh context cũ.&quot;&quot;&quot;</span>
+    <span style="color: #f8f8f2">driver</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(GEMINI_URL)</span>
+    <span style="color: #f8f8f2">time</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sleep(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">WebDriverWait(driver,</span> <span style="color: #ae81ff">30</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">until(</span>
+        <span style="color: #66d9ef">lambda</span> <span style="color: #f8f8f2">d:</span> <span style="color: #f8f8f2">len(d</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">find_elements(</span>
+            <span style="color: #f8f8f2">By</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">CSS_SELECTOR,</span> <span style="color: #e6db74">&quot;div[contenteditable=&#39;true&#39;], textarea&quot;</span>
+        <span style="color: #f8f8f2">))</span> <span style="color: #f92672">&gt;</span> <span style="color: #ae81ff">0</span>
+    <span style="color: #f8f8f2">)</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">build_tm_prompt</span><span style="color: #f8f8f2">(keyword_items):</span>
+    <span style="color: #f8f8f2">keyword_lines</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">join(</span><span style="color: #e6db74">f&quot;- {</span><span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&#39;keyword&#39;</span><span style="color: #f8f8f2">]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">item</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">keyword_items)</span>
+
+    <span style="color: #66d9ef">return</span> <span style="color: #e6db74">f&quot;&quot;&quot;Đây là bộ từ khóa chính:</span>
+
+<span style="color: #e6db74">{</span><span style="color: #f8f8f2">keyword_lines</span><span style="color: #e6db74">}</span>
+
+<span style="color: #e6db74">HÃY TỰ LOẠI BỎ NHỮNG TỪ KHÓA DÍNH ĐẾN THƯƠNG HIỆU, TÊN NHÂN VẬT, TÊN CA SĨ/DIỄN VIÊN NỔI TIẾNG CÓ TRADEMARK.</span>
+
+<span style="color: #e6db74">Yêu cầu:</span>
+<span style="color: #e6db74">1. Review khả năng bị đánh bản quyền / trademark / thương hiệu / nhân vật / người nổi tiếng của từng keyword.</span>
+<span style="color: #e6db74">2. Keyword nào có rủi ro trademark, brand name, celebrity, character, copyrighted franchise, team, movie/game/anime/music reference/ hoặc thuộc class 16 trong trademarkia thì để Check TM là WARNING.</span>
+<span style="color: #e6db74">3. Keyword nào không thấy rủi ro rõ ràng thì để Check TM là SAFE.</span>
+<span style="color: #e6db74">4. Giữ nguyên chính xác từng keyword gốc, không được sửa chính tả hay thêm bớt ký tự.</span>
+<span style="color: #e6db74">5. Chỉ trả về bảng Markdown nằm giữa BEGIN_RESULT và END_RESULT.</span>
+<span style="color: #e6db74">6. Không giải thích thêm ngoài bảng.</span>
+
+<span style="color: #e6db74">Format bắt buộc:</span>
+
+<span style="color: #e6db74">BEGIN_RESULT</span>
+<span style="color: #e6db74">| Keyword | Check TM |</span>
+<span style="color: #e6db74">|---|---|</span>
+<span style="color: #e6db74">| keyword gốc | SAFE hoặc WARNING |</span>
+<span style="color: #e6db74">END_RESULT&quot;&quot;&quot;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip()</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">find_gemini_input_box</span><span style="color: #f8f8f2">(driver):</span>
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">selector</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;div[contenteditable=&#39;true&#39;]&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;textarea&quot;</span><span style="color: #f8f8f2">]:</span>
+        <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">element</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">driver</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">find_elements(By</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">CSS_SELECTOR,</span> <span style="color: #f8f8f2">selector):</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">element</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">is_displayed()</span> <span style="color: #f92672">and</span> <span style="color: #f8f8f2">element</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">is_enabled():</span>
+                <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">element</span>
+    <span style="color: #66d9ef">raise</span> <span style="color: #a6e22e">RuntimeError</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Không tìm thấy ô nhập prompt của Gemini.&quot;</span><span style="color: #f8f8f2">)</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">click_gemini_send_button</span><span style="color: #f8f8f2">(driver):</span>
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">selector</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">[</span>
+        <span style="color: #e6db74">&#39;button[aria-label*=&quot;Send&quot;]&#39;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&#39;button[aria-label*=&quot;Gửi&quot;]&#39;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&#39;button[aria-label*=&quot;Submit&quot;]&#39;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&#39;button[data-test-id*=&quot;send&quot;]&#39;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #f8f8f2">]:</span>
+        <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">button</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">driver</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">find_elements(By</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">CSS_SELECTOR,</span> <span style="color: #f8f8f2">selector):</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">button</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">is_displayed()</span> <span style="color: #f92672">and</span> <span style="color: #f8f8f2">button</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">is_enabled():</span>
+                <span style="color: #f8f8f2">button</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">click()</span>
+                <span style="color: #66d9ef">return</span> <span style="color: #66d9ef">True</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #66d9ef">False</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">send_prompt_to_gemini</span><span style="color: #f8f8f2">(driver,</span> <span style="color: #f8f8f2">prompt):</span>
+    <span style="color: #f8f8f2">input_box</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">find_gemini_input_box(driver)</span>
+    <span style="color: #f8f8f2">input_box</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">click()</span>
+    <span style="color: #f8f8f2">time</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sleep(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">pyperclip</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">copy(prompt)</span>
+    <span style="color: #f8f8f2">input_box</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">send_keys(Keys</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">CONTROL,</span> <span style="color: #e6db74">&quot;v&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">time</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sleep(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">sent</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">click_gemini_send_button(driver)</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">sent:</span>
+        <span style="color: #f8f8f2">input_box</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">send_keys(Keys</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ENTER)</span>
+
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;  Đã gửi prompt sang Gemini.&quot;</span><span style="color: #f8f8f2">)</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">wait_for_gemini_result</span><span style="color: #f8f8f2">(driver,</span> <span style="color: #f8f8f2">timeout_seconds</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">RESPONSE_TIMEOUT_SECONDS):</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  Đang chờ Gemini trả kết quả (tối đa {</span><span style="color: #f8f8f2">timeout_seconds</span><span style="color: #e6db74">}s)...&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #66d9ef">try</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #f8f8f2">WebDriverWait(driver,</span> <span style="color: #f8f8f2">timeout_seconds)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">until(</span>
+            <span style="color: #66d9ef">lambda</span> <span style="color: #f8f8f2">d:</span> <span style="color: #e6db74">&quot;BEGIN_RESULT&quot;</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">d</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">find_element(By</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">TAG_NAME,</span> <span style="color: #e6db74">&quot;body&quot;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">text</span>
+            <span style="color: #f92672">and</span> <span style="color: #e6db74">&quot;END_RESULT&quot;</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">d</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">find_element(By</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">TAG_NAME,</span> <span style="color: #e6db74">&quot;body&quot;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">text</span>
+        <span style="color: #f8f8f2">)</span>
+    <span style="color: #66d9ef">except</span> <span style="color: #a6e22e">Exception</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #f8f8f2">body_text</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">driver</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">find_element(By</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">TAG_NAME,</span> <span style="color: #e6db74">&quot;body&quot;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">text</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  [DEBUG] Timeout hoặc lỗi. Nội dung trang (200 ký tự cuối):&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  {</span><span style="color: #f8f8f2">body_text[</span><span style="color: #f92672">-</span><span style="color: #ae81ff">200</span><span style="color: #f8f8f2">:]</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #66d9ef">raise</span> <span style="color: #a6e22e">RuntimeError</span><span style="color: #f8f8f2">(</span>
+            <span style="color: #e6db74">f&quot;Gemini không trả kết quả trong {</span><span style="color: #f8f8f2">timeout_seconds</span><span style="color: #e6db74">}s. &quot;</span>
+            <span style="color: #e6db74">&quot;Thử tăng RESPONSE_TIMEOUT_SECONDS trong config.&quot;</span>
+        <span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">time</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sleep(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">body_text</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">driver</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">find_element(By</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">TAG_NAME,</span> <span style="color: #e6db74">&quot;body&quot;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">text</span>
+
+    <span style="color: #f8f8f2">result_blocks</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">findall(</span>
+        <span style="color: #e6db74">r&quot;BEGIN_RESULT\s*(.*?)\s*END_RESULT&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #f8f8f2">body_text,</span>
+        <span style="color: #f8f8f2">flags</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">DOTALL</span> <span style="color: #f92672">|</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">IGNORECASE,</span>
+    <span style="color: #f8f8f2">)</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">result_blocks:</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;  [DEBUG] Không tìm thấy block. Nội dung trang (500 ký tự cuối):&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  {</span><span style="color: #f8f8f2">body_text[</span><span style="color: #f92672">-</span><span style="color: #ae81ff">500</span><span style="color: #f8f8f2">:]</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #66d9ef">raise</span> <span style="color: #a6e22e">RuntimeError</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Không tìm thấy block BEGIN_RESULT / END_RESULT trong kết quả Gemini.&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">result_blocks[</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip()</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">_try_match</span><span style="color: #f8f8f2">(norm_key,</span> <span style="color: #f8f8f2">original_lookup):</span>
+    <span style="color: #e6db74">&quot;&quot;&quot;Tìm key trong original_lookup: chính xác trước, fuzzy sau.&quot;&quot;&quot;</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">norm_key</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">original_lookup:</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">norm_key</span>
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">orig_norm</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">original_lookup:</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">orig_norm</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">norm_key</span> <span style="color: #f92672">or</span> <span style="color: #f8f8f2">norm_key</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">orig_norm:</span>
+            <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">orig_norm</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #66d9ef">None</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">parse_markdown_table_result</span><span style="color: #f8f8f2">(result_block,</span> <span style="color: #f8f8f2">keyword_items):</span>
+    <span style="color: #e6db74">&quot;&quot;&quot;</span>
+<span style="color: #e6db74">    Parse kết quả Gemini — hỗ trợ 2 format:</span>
+<span style="color: #e6db74">      1. Bảng Markdown : | keyword | SAFE |</span>
+<span style="color: #e6db74">      2. Plain text    : keyword SAFE</span>
+<span style="color: #e6db74">    &quot;&quot;&quot;</span>
+    <span style="color: #f8f8f2">original_lookup</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #f8f8f2">normalize_text(item[</span><span style="color: #e6db74">&quot;keyword&quot;</span><span style="color: #f8f8f2">]):</span> <span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&quot;keyword&quot;</span><span style="color: #f8f8f2">]</span>
+        <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">item</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">keyword_items</span>
+    <span style="color: #f8f8f2">}</span>
+
+    <span style="color: #f8f8f2">result_map</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{}</span>
+    <span style="color: #f8f8f2">skipped</span>    <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[]</span>
+
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">line</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">result_block</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">splitlines():</span>
+        <span style="color: #f8f8f2">line</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">line</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip()</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">line:</span>
+            <span style="color: #66d9ef">continue</span>
+
+        <span style="color: #75715e"># ── Format 1: Markdown table ──────────────────────────────</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">line</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">startswith(</span><span style="color: #e6db74">&quot;|&quot;</span><span style="color: #f8f8f2">):</span>
+            <span style="color: #75715e"># Bỏ separator |---|---|</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">search(</span><span style="color: #e6db74">r&quot;^\|\s*[-:]+\s*\|\s*[-:]+\s*\|?$&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">line):</span>
+                <span style="color: #66d9ef">continue</span>
+
+            <span style="color: #f8f8f2">columns</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[col</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip()</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">col</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">line</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip(</span><span style="color: #e6db74">&quot;|&quot;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split(</span><span style="color: #e6db74">&quot;|&quot;</span><span style="color: #f8f8f2">)]</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">len(columns)</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">:</span>
+                <span style="color: #66d9ef">continue</span>
+
+            <span style="color: #f8f8f2">raw_keyword</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">strip_markdown(columns[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">])</span>
+            <span style="color: #f8f8f2">status</span>      <span style="color: #f92672">=</span> <span style="color: #f8f8f2">columns[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">upper()</span>
+
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">normalize_text(raw_keyword)</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;keyword&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;check tm&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;từ khóa&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f8f8f2">):</span>
+                <span style="color: #66d9ef">continue</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">status</span> <span style="color: #f92672">not</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;SAFE&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;WARNING&quot;</span><span style="color: #f8f8f2">):</span>
+                <span style="color: #66d9ef">continue</span>
+
+            <span style="color: #f8f8f2">matched</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">_try_match(normalize_text(raw_keyword),</span> <span style="color: #f8f8f2">original_lookup)</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">matched:</span>
+                <span style="color: #f8f8f2">result_map[matched]</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">status</span>
+            <span style="color: #66d9ef">else</span><span style="color: #f8f8f2">:</span>
+                <span style="color: #f8f8f2">skipped</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append(raw_keyword)</span>
+
+        <span style="color: #75715e"># ── Format 2: Plain text &quot;keyword SAFE&quot; / &quot;keyword WARNING&quot; ─</span>
+        <span style="color: #66d9ef">else</span><span style="color: #f8f8f2">:</span>
+            <span style="color: #75715e"># Dòng kết thúc bằng SAFE hoặc WARNING (có thể có dấu chấm, dấu phẩy)</span>
+            <span style="color: #f8f8f2">m</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">match(</span>
+                <span style="color: #e6db74">r&quot;^(.+?)\s+(SAFE|WARNING)[.,;]?\s*$&quot;</span><span style="color: #f8f8f2">,</span>
+                <span style="color: #f8f8f2">line,</span>
+                <span style="color: #f8f8f2">flags</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">IGNORECASE,</span>
+            <span style="color: #f8f8f2">)</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">m:</span>
+                <span style="color: #66d9ef">continue</span>
+
+            <span style="color: #f8f8f2">raw_keyword</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">strip_markdown(m</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">group(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strip())</span>
+            <span style="color: #f8f8f2">status</span>      <span style="color: #f92672">=</span> <span style="color: #f8f8f2">m</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">group(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">upper()</span>
+
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">normalize_text(raw_keyword)</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;keyword&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;check tm&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;từ khóa&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f8f8f2">):</span>
+                <span style="color: #66d9ef">continue</span>
+
+            <span style="color: #f8f8f2">matched</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">_try_match(normalize_text(raw_keyword),</span> <span style="color: #f8f8f2">original_lookup)</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">matched:</span>
+                <span style="color: #f8f8f2">result_map[matched]</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">status</span>
+            <span style="color: #66d9ef">else</span><span style="color: #f8f8f2">:</span>
+                <span style="color: #f8f8f2">skipped</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append(raw_keyword)</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">skipped:</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  [DEBUG] {</span><span style="color: #f8f8f2">len(skipped)</span><span style="color: #e6db74">} dòng không khớp keyword gốc:&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">kw</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">skipped[:</span><span style="color: #ae81ff">10</span><span style="color: #f8f8f2">]:</span>
+            <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;    - </span><span style="color: #ae81ff">\&quot;</span><span style="color: #e6db74">{</span><span style="color: #f8f8f2">kw</span><span style="color: #e6db74">}</span><span style="color: #ae81ff">\&quot;</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">result_map</span>
+
+
+<span style="color: #75715e"># =========================================================</span>
+<span style="color: #75715e"># MAIN TASK</span>
+<span style="color: #75715e"># =========================================================</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">run_task_kw_b3</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;===== TASKKWB3: CHECK TRADEMARK BY GEMINI WEB =====&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">service</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">get_sheets_service()</span>
+
+    <span style="color: #75715e"># Đọc toàn bộ keyword chưa check</span>
+    <span style="color: #f8f8f2">all_keywords</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">get_unchecked_keywords(service,</span> <span style="color: #f8f8f2">SPREADSHEET_ID,</span> <span style="color: #f8f8f2">SOURCE_SHEET_NAME)</span>
+
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&#39;Sheet nguồn: &quot;{</span><span style="color: #f8f8f2">SOURCE_SHEET_NAME</span><span style="color: #e6db74">}&quot;&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;Tổng keyword chưa check: {</span><span style="color: #f8f8f2">len(all_keywords)</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">all_keywords:</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Không có keyword nào cần check. Kết thúc.&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #66d9ef">return</span>
+
+    <span style="color: #75715e"># Chia batch</span>
+    <span style="color: #f8f8f2">batches</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span>
+        <span style="color: #f8f8f2">all_keywords[i:i</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">BATCH_SIZE]</span>
+        <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">i</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">range(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">len(all_keywords),</span> <span style="color: #f8f8f2">BATCH_SIZE)</span>
+    <span style="color: #f8f8f2">]</span>
+    <span style="color: #f8f8f2">total_batches</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">len(batches)</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;Sẽ xử lý {</span><span style="color: #f8f8f2">total_batches</span><span style="color: #e6db74">} batch (mỗi batch ≤ {</span><span style="color: #f8f8f2">BATCH_SIZE</span><span style="color: #e6db74">} keywords).&quot;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">driver</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">None</span>
+
+    <span style="color: #66d9ef">try</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #f8f8f2">driver</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">create_chrome_driver()</span>
+        <span style="color: #f8f8f2">wait_for_gemini_ready(driver)</span>
+
+        <span style="color: #f8f8f2">total_warning</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
+        <span style="color: #f8f8f2">total_safe</span>    <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
+        <span style="color: #f8f8f2">total_error</span>   <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
+
+        <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">batch_index,</span> <span style="color: #f8f8f2">batch_items</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">enumerate(batches,</span> <span style="color: #f8f8f2">start</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">):</span>
+            <span style="color: #f8f8f2">print()</span>
+            <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;{&#39;─&#39;</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">50</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+            <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;BATCH {</span><span style="color: #f8f8f2">batch_index</span><span style="color: #e6db74">}/{</span><span style="color: #f8f8f2">total_batches</span><span style="color: #e6db74">} — {</span><span style="color: #f8f8f2">len(batch_items)</span><span style="color: #e6db74">} keywords&quot;</span><span style="color: #f8f8f2">)</span>
+            <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;{&#39;─&#39;</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">50</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+
+            <span style="color: #75715e"># Mở conversation mới cho mỗi batch (trừ batch đầu)</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">batch_index</span> <span style="color: #f92672">&gt;</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span>
+                <span style="color: #f8f8f2">open_new_gemini_chat(driver)</span>
+
+            <span style="color: #f8f8f2">prompt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">build_tm_prompt(batch_items)</span>
+
+            <span style="color: #66d9ef">try</span><span style="color: #f8f8f2">:</span>
+                <span style="color: #f8f8f2">send_prompt_to_gemini(driver,</span> <span style="color: #f8f8f2">prompt)</span>
+                <span style="color: #f8f8f2">result_block</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">wait_for_gemini_result(driver)</span>
+
+                <span style="color: #f8f8f2">print()</span>
+                <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;  ── KẾT QUẢ RAW TỪ GEMINI ──&quot;</span><span style="color: #f8f8f2">)</span>
+                <span style="color: #f8f8f2">print(result_block)</span>
+                <span style="color: #f8f8f2">print()</span>
+
+                <span style="color: #f8f8f2">result_map</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">parse_markdown_table_result(result_block,</span> <span style="color: #f8f8f2">batch_items)</span>
+                <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  Parse được {</span><span style="color: #f8f8f2">len(result_map)</span><span style="color: #e6db74">}/{</span><span style="color: #f8f8f2">len(batch_items)</span><span style="color: #e6db74">} keyword.&quot;</span><span style="color: #f8f8f2">)</span>
+
+                <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">result_map:</span>
+                    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;  [!] Không parse được kết quả — bỏ qua batch này.&quot;</span><span style="color: #f8f8f2">)</span>
+                    <span style="color: #f8f8f2">total_error</span> <span style="color: #f92672">+=</span> <span style="color: #f8f8f2">len(batch_items)</span>
+                    <span style="color: #66d9ef">continue</span>
+
+                <span style="color: #75715e"># Đếm warning/safe</span>
+                <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">status</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">result_map</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">values():</span>
+                    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">status</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;WARNING&quot;</span><span style="color: #f8f8f2">:</span>
+                        <span style="color: #f8f8f2">total_warning</span> <span style="color: #f92672">+=</span> <span style="color: #ae81ff">1</span>
+                    <span style="color: #66d9ef">else</span><span style="color: #f8f8f2">:</span>
+                        <span style="color: #f8f8f2">total_safe</span> <span style="color: #f92672">+=</span> <span style="color: #ae81ff">1</span>
+
+                <span style="color: #f8f8f2">update_check_tm_values(</span>
+                    <span style="color: #f8f8f2">service,</span> <span style="color: #f8f8f2">SPREADSHEET_ID,</span> <span style="color: #f8f8f2">SOURCE_SHEET_NAME,</span> <span style="color: #f8f8f2">batch_items,</span> <span style="color: #f8f8f2">result_map</span>
+                <span style="color: #f8f8f2">)</span>
+
+            <span style="color: #66d9ef">except</span> <span style="color: #a6e22e">Exception</span> <span style="color: #66d9ef">as</span> <span style="color: #f8f8f2">error:</span>
+                <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  [!] Lỗi batch {</span><span style="color: #f8f8f2">batch_index</span><span style="color: #e6db74">}: {</span><span style="color: #f8f8f2">error</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+                <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;  → Bỏ qua batch này, tiếp tục batch sau.&quot;</span><span style="color: #f8f8f2">)</span>
+                <span style="color: #f8f8f2">total_error</span> <span style="color: #f92672">+=</span> <span style="color: #f8f8f2">len(batch_items)</span>
+                <span style="color: #66d9ef">continue</span>
+
+        <span style="color: #f8f8f2">print()</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;=&quot;</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">50</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;  HOÀN TẤT TASKKWB3&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  WARNING : {</span><span style="color: #f8f8f2">total_warning</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  SAFE    : {</span><span style="color: #f8f8f2">total_safe</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">f&quot;  Lỗi/bỏ sót : {</span><span style="color: #f8f8f2">total_error</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">)</span>
+        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;=&quot;</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">50</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #66d9ef">finally</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">driver:</span>
+            <span style="color: #f8f8f2">driver</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">quit()</span>
+            <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Đã tắt Chrome Gemini.&quot;</span><span style="color: #f8f8f2">)</span>
+
+
+<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">__name__</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;__main__&quot;</span><span style="color: #f8f8f2">:</span>
+    <span style="color: #f8f8f2">run_task_kw_b3()</span></pre>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-top:10px;padding:8px 24px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);border-radius:10px;max-width:900px;text-align:center;">
+      <p style="font-size:13px;color:#a5b4fc;">
+        ✍️ Em mô tả luồng + tiêu chí → AI Cowork tạo ra ~537 dòng Python hoàn chỉnh, tự động hóa toàn bộ
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== SLIDE 12: STRENGTHS ===================== -->
   <div class="slide bg-gradient-3">
     <div class="chip chip-green">Điểm Mạnh</div>
     <h2 style="text-align:center;margin-bottom:24px;">
